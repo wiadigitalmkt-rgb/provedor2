@@ -1,634 +1,391 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WIAFIBRA — Internet que nunca trava. Nunca.</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --primary:#0A2540;
-    --bg:#0D1321;
-    --bg-light:#F5F7FA;
-    --accent-green:#00E28A;
-    --accent-orange:#FF7A00;
-    --text-title:#FFFFFF;
-    --text-body:#AAB4C4;
-    --line:#1E2A47;
-    --dark-text:#0A2540;
-    --font-display:'Space Grotesk', sans-serif;
-    --font-body:'Inter', sans-serif;
-    --font-mono:'JetBrains Mono', monospace;
-    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-    --max: 1180px;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gaúchos Telecom | Provedor de Internet 100% Fibra Óptica</title>
 
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--text-body);
-    font-family:var(--font-body);
-    line-height:1.5;
-    overflow-x:hidden;
-  }
-  h1,h2,h3,h4{font-family:var(--font-display); color:var(--text-title); font-weight:700; line-height:1.1; letter-spacing:-0.02em;}
-  a{text-decoration:none; color:inherit;}
-  img,svg{display:block; max-width:100%;}
-  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px;}
-  .mono{font-family:var(--font-mono);}
-  button{font-family:inherit; cursor:pointer; border:none;}
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  a:focus-visible, button:focus-visible, summary:focus-visible{
-    outline:2px solid var(--accent-green);
-    outline-offset:3px;
-  }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  @media (prefers-reduced-motion: reduce){
-    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
-  }
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-  /* ---------- reveal ---------- */
-  .reveal{opacity:0; transform:translateY(24px); transition:opacity .6s var(--ease-out-expo), transform .6s var(--ease-out-expo);}
-  .reveal.in{opacity:1; transform:translateY(0);}
-
-  /* ---------- fiber line signature ---------- */
-  .fiber-divider{
-    position:relative; height:2px; width:100%;
-    background:linear-gradient(90deg, transparent, var(--accent-green) 20%, var(--accent-green) 80%, transparent);
-    opacity:.35;
-    overflow:hidden;
-  }
-  .fiber-divider::after{
-    content:''; position:absolute; top:0; left:-30%; width:30%; height:100%;
-    background:linear-gradient(90deg, transparent, #fff, transparent);
-    animation:pulseTravel 3.5s linear infinite;
-  }
-  @keyframes pulseTravel{
-    0%{left:-30%;}
-    100%{left:100%;}
-  }
-
-  /* ---------- header ---------- */
-  header{
-    position:fixed; top:0; left:0; right:0; z-index:100;
-    background:rgba(13,19,33,0.75);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{display:flex; align-items:center; justify-content:space-between; height:72px;}
-  .logo{font-family:var(--font-display); font-weight:700; font-size:1.3rem; color:var(--text-title); display:flex; align-items:center; gap:8px;}
-  .logo .dot{width:9px; height:9px; border-radius:50%; background:var(--accent-green); box-shadow:0 0 10px var(--accent-green);}
-  .nav-links{display:flex; gap:32px; font-size:.9rem; color:var(--text-body);}
-  .nav-links a:hover{color:var(--text-title);}
-  .nav-cta{
-    background:var(--accent-green); color:#04160F; font-weight:600; font-size:.85rem;
-    padding:12px 20px; border-radius:8px; transition:transform .2s ease, box-shadow .2s ease;
-    display:inline-block;
-  }
-  .nav-cta:hover{transform:scale(1.03); box-shadow:0 0 24px rgba(0,226,138,.4);}
-  @media (max-width:860px){ .nav-links{display:none;} }
-
-  /* ---------- hero ---------- */
-  .hero{
-    position:relative;
-    min-height:100vh;
-    display:flex; align-items:center;
-    padding-top:100px; padding-bottom:80px;
-    background:
-      radial-gradient(ellipse 60% 50% at 70% 20%, rgba(0,226,138,.10), transparent 60%),
-      linear-gradient(135deg, var(--primary) 0%, var(--bg) 60%, #001F3F 100%);
-    overflow:hidden;
-  }
-  .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center;}
-  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
-
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:var(--font-mono); font-size:.75rem; letter-spacing:.08em; text-transform:uppercase;
-    color:var(--accent-green); border:1px solid rgba(0,226,138,.35); padding:6px 14px; border-radius:999px;
-    margin-bottom:24px;
-  }
-  .hero h1{font-size:clamp(2.4rem, 5vw, 4.2rem); margin-bottom:20px;}
-  .hero h1 .accent{color:var(--accent-green);}
-  .hero p.sub{font-size:clamp(1rem,1.6vw,1.2rem); color:var(--text-body); max-width:520px; margin-bottom:32px;}
-  .cta-row{display:flex; flex-wrap:wrap; gap:16px; align-items:center; margin-bottom:28px;}
-  .btn-primary{
-    background:var(--accent-green); color:#04160F; font-weight:700; font-size:1rem;
-    padding:16px 28px; border-radius:10px; transition:transform .2s ease, box-shadow .2s ease;
-    display:inline-flex; align-items:center; gap:10px;
-  }
-  .btn-primary:hover{transform:scale(1.03); box-shadow:0 0 30px rgba(0,226,138,.45);}
-  .btn-ghost{
-    border:1px solid var(--line); color:var(--text-title); font-weight:600; font-size:1rem;
-    padding:16px 28px; border-radius:10px; transition:border-color .2s ease, background .2s ease;
-  }
-  .btn-ghost:hover{border-color:var(--accent-green); background:rgba(0,226,138,.06);}
-  .trust-note{font-size:.85rem; color:var(--text-body); display:flex; align-items:center; gap:8px;}
-  .trust-note .chk{color:var(--accent-green); font-weight:700;}
-
-  /* hero visual: signal panel */
-  .signal-panel{
-    position:relative; border:1px solid var(--line); border-radius:20px;
-    background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-    padding:28px; backdrop-filter:blur(6px);
-  }
-  .signal-row{display:flex; justify-content:space-between; align-items:center; margin-bottom:22px;}
-  .signal-label{font-family:var(--font-mono); font-size:.75rem; color:var(--text-body); text-transform:uppercase; letter-spacing:.06em;}
-  .signal-value{font-family:var(--font-mono); font-weight:700; color:var(--accent-green); font-size:1.6rem;}
-  .wave{width:100%; height:70px;}
-  .wave path{stroke:var(--accent-green); stroke-width:2; fill:none; filter:drop-shadow(0 0 6px rgba(0,226,138,.6));}
-
-  /* ---------- section base ---------- */
-  section{padding:110px 0;}
-  .section-head{max-width:640px; margin-bottom:56px;}
-  .section-head .eyebrow{color:var(--accent-orange); border-color:rgba(255,122,0,.35);}
-  .section-head h2{font-size:clamp(1.8rem, 3.2vw, 2.6rem);}
-  .section-head p{color:var(--text-body); font-size:1.05rem; margin-top:14px;}
-
-  /* ---------- pain section ---------- */
-  .pain-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
-  @media (max-width:860px){ .pain-grid{grid-template-columns:1fr;} }
-  .pain-card{
-    border:1px solid var(--line); border-radius:16px; padding:28px;
-    background:rgba(255,255,255,.02);
-    transition:transform .25s var(--ease-out-expo), border-color .25s ease;
-  }
-  .pain-card:hover{transform:translateY(-4px); border-color:rgba(255,122,0,.4);}
-  .pain-card .num{font-family:var(--font-mono); color:var(--accent-orange); font-size:.85rem; margin-bottom:16px; display:block;}
-  .pain-card h3{font-size:1.15rem; margin-bottom:10px;}
-  .pain-card p{font-size:.95rem;}
-
-  /* ---------- solution / compare ---------- */
-  .compare{
-    display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--line); border-radius:20px; overflow:hidden;
-  }
-  @media (max-width:760px){ .compare{grid-template-columns:1fr;} }
-  .compare > div{padding:36px;}
-  .compare .old{background:rgba(255,255,255,.02);}
-  .compare .new{background:linear-gradient(160deg, rgba(0,226,138,.08), transparent);}
-  .compare h4{font-family:var(--font-mono); font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; color:var(--text-body); margin-bottom:18px;}
-  .compare .new h4{color:var(--accent-green);}
-  .compare ul{list-style:none;}
-  .compare li{padding:10px 0; border-bottom:1px solid var(--line); font-size:.95rem; display:flex; gap:10px;}
-  .compare .old li::before{content:'—'; color:#5b6b85;}
-  .compare .new li::before{content:'✓'; color:var(--accent-green); font-weight:700;}
-
-  /* ---------- benefits ---------- */
-  .benefits-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
-  @media (max-width:1000px){ .benefits-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:560px){ .benefits-grid{grid-template-columns:1fr;} }
-  .benefit-card{
-    border:1px solid var(--line); border-radius:16px; padding:26px; background:rgba(255,255,255,.02);
-    transition:transform .25s var(--ease-out-expo), border-color .25s ease, box-shadow .25s ease;
-  }
-  .benefit-card:hover{transform:translateY(-6px); border-color:rgba(0,226,138,.4); box-shadow:0 12px 30px rgba(0,0,0,.35);}
-  .benefit-icon{width:42px; height:42px; border-radius:10px; background:rgba(0,226,138,.12); display:flex; align-items:center; justify-content:center; margin-bottom:18px; color:var(--accent-green); font-size:1.2rem;}
-  .benefit-card h3{font-size:1.05rem; margin-bottom:8px;}
-  .benefit-card p{font-size:.9rem;}
-
-  /* ---------- stats ---------- */
-  .stats-bar{
-    display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--line); border-radius:20px; overflow:hidden;
-  }
-  @media (max-width:760px){ .stats-bar{grid-template-columns:repeat(2,1fr);} }
-  .stat{padding:32px 20px; text-align:center; border-right:1px solid var(--line);}
-  .stat:last-child{border-right:none;}
-  .stat .val{font-family:var(--font-mono); font-size:clamp(1.6rem,3vw,2.4rem); color:var(--accent-green); font-weight:700;}
-  .stat .lbl{font-size:.8rem; color:var(--text-body); margin-top:6px;}
-
-  /* ---------- testimonials ---------- */
-  .testi-track{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:48px;}
-  @media (max-width:900px){ .testi-track{grid-template-columns:1fr; overflow-x:auto;} }
-  .testi-card{border:1px solid var(--line); border-radius:16px; padding:26px; background:rgba(255,255,255,.02);}
-  .testi-card p{font-size:.95rem; color:var(--text-title); margin-bottom:20px; font-style:italic;}
-  .testi-who{display:flex; align-items:center; gap:12px;}
-  .avatar{width:38px; height:38px; border-radius:50%; background:var(--primary); border:1px solid var(--accent-green); display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:.8rem; color:var(--accent-green);}
-  .testi-name{font-size:.85rem; color:var(--text-title); font-weight:600;}
-  .testi-loc{font-size:.75rem; color:var(--text-body);}
-
-  /* ---------- pricing ---------- */
-  .price-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; align-items:start;}
-  @media (max-width:900px){ .price-grid{grid-template-columns:1fr;} }
-  .plan{
-    border:1px solid var(--line); border-radius:20px; padding:32px; background:rgba(255,255,255,.02);
-    transition:transform .25s var(--ease-out-expo), border-color .25s ease;
-  }
-  .plan:hover{transform:translateY(-6px);}
-  .plan.featured{
-    border-color:var(--accent-green);
-    background:linear-gradient(160deg, rgba(0,226,138,.10), rgba(255,255,255,.02));
-    position:relative;
-  }
-  .badge{
-    position:absolute; top:-14px; left:32px; background:var(--accent-green); color:#04160F;
-    font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
-    padding:6px 12px; border-radius:999px;
-    animation:pulseBadge 2s ease-in-out infinite;
-  }
-  @keyframes pulseBadge{ 0%,100%{transform:scale(1);} 50%{transform:scale(1.05);} }
-  .plan-name{font-family:var(--font-mono); font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; color:var(--text-body);}
-  .plan-speed{font-family:var(--font-display); font-size:2.6rem; color:var(--text-title); margin:10px 0 4px;}
-  .plan-speed span{font-size:1rem; color:var(--text-body); font-family:var(--font-body);}
-  .plan-for{font-size:.85rem; color:var(--accent-green); margin-bottom:22px;}
-  .plan ul{list-style:none; margin-bottom:26px;}
-  .plan li{font-size:.9rem; padding:8px 0; border-bottom:1px solid var(--line); display:flex; gap:8px;}
-  .plan li::before{content:'✓'; color:var(--accent-green); font-weight:700;}
-  .plan-price{font-family:var(--font-mono); font-size:1.6rem; color:var(--text-title); font-weight:700; margin-bottom:18px;}
-  .plan-price span{font-size:.85rem; color:var(--text-body); font-weight:400;}
-  .plan-btn{
-    display:block; text-align:center; padding:14px; border-radius:10px; font-weight:600;
-    border:1px solid var(--accent-green); color:var(--accent-green); transition:all .2s ease;
-  }
-  .plan.featured .plan-btn{background:var(--accent-green); color:#04160F;}
-  .plan-btn:hover{background:var(--accent-green); color:#04160F;}
-
-  /* ---------- faq ---------- */
-  .faq-list{max-width:760px;}
-  .faq-item{border-bottom:1px solid var(--line);}
-  .faq-item summary{
-    list-style:none; cursor:pointer; padding:22px 4px; display:flex; justify-content:space-between; gap:16px;
-    font-family:var(--font-display); font-weight:600; color:var(--text-title); font-size:1.02rem;
-  }
-  .faq-item summary::-webkit-details-marker{display:none;}
-  .faq-item summary .plus{font-family:var(--font-mono); color:var(--accent-green); transition:transform .3s ease; flex-shrink:0;}
-  .faq-item[open] summary .plus{transform:rotate(45deg);}
-  .faq-item p{padding:0 4px 22px; font-size:.95rem; color:var(--text-body); max-width:620px;}
-
-  /* ---------- final cta ---------- */
-  .final-cta{
-    border-radius:28px; padding:64px 40px; text-align:center;
-    background:radial-gradient(ellipse 80% 100% at 50% 0%, rgba(0,226,138,.14), transparent 70%), var(--primary);
-    border:1px solid var(--line);
-  }
-  .final-cta h2{font-size:clamp(1.8rem,4vw,2.8rem); margin-bottom:16px;}
-  .final-cta p{color:var(--text-body); max-width:520px; margin:0 auto 32px; font-size:1.05rem;}
-  .final-cta .cta-row{justify-content:center;}
-  .final-cta .urgency{font-family:var(--font-mono); font-size:.8rem; color:var(--accent-orange); margin-top:22px;}
-
-  /* ---------- footer ---------- */
-  footer{border-top:1px solid var(--line); padding:48px 0 32px;}
-  .footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; margin-bottom:32px;}
-  .footer-links{display:flex; gap:28px; font-size:.85rem;}
-  .footer-links a:hover{color:var(--text-title);}
-  .footer-bottom{font-size:.78rem; color:#5b6b85; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
-
-  /* ---------- whatsapp float ---------- */
-  .wa-float{
-    position:fixed; bottom:22px; right:22px; z-index:200;
-    width:60px; height:60px; border-radius:50%; background:#00E28A;
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 6px 24px rgba(0,226,138,.45);
-    transition:transform .2s ease;
-  }
-  .wa-float:hover{transform:scale(1.08);}
-  .wa-float svg{width:28px; height:28px;}
-
-  /* mobile plan carousel */
-  @media (max-width:900px){
-    .price-grid{
-      display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:18px; padding-bottom:8px;
-      grid-template-columns:none;
-    }
-    .plan{min-width:82%; scroll-snap-align:center;}
-  }
-</style>
-</head>
-<body>
-
-<header>
-  <div class="wrap nav">
-    <div class="logo"><span class="dot"></span>WIAFIBRA</div>
-    <nav class="nav-links">
-      <a href="#solucao">Solução</a>
-      <a href="#planos">Planos</a>
-      <a href="#depoimentos">Clientes</a>
-      <a href="#faq">Dúvidas</a>
-    </nav>
-    <a href="#planos" class="nav-cta">Verificar Cobertura</a>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="hero" id="topo">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow reveal">● Fibra óptica 100% pura</div>
-      <h1 class="reveal">Internet que nunca trava. <span class="accent">Nunca.</span></h1>
-      <p class="sub reveal">Fibra óptica pura, velocidade estável 24h por dia, para quem não pode parar — famílias, home office e gamers.</p>
-      <div class="cta-row reveal">
-        <a href="#planos" class="btn-primary">Verificar Disponibilidade →</a>
-        <a href="https://wa.me/5500000000000" class="btn-ghost">Falar no WhatsApp</a>
-      </div>
-      <div class="trust-note reveal"><span class="chk">✓</span> Instalação sem taxa · <span class="chk">✓</span> Sem fidelidade abusiva</div>
-    </div>
-    <div class="signal-panel reveal">
-      <div class="signal-row">
-        <span class="signal-label">Status da rede</span>
-        <span class="signal-label" style="color:var(--accent-green)">● online</span>
-      </div>
-      <svg class="wave" viewBox="0 0 400 70" preserveAspectRatio="none">
-        <path id="wavePath" d="M0,35 Q40,5 80,35 T160,35 T240,35 T320,35 T400,35"/>
-      </svg>
-      <div class="signal-row" style="margin-top:18px; margin-bottom:0;">
-        <div><span class="signal-label">Ping</span><br><span class="signal-value" style="font-size:1.2rem">4ms</span></div>
-        <div><span class="signal-label">Download</span><br><span class="signal-value" style="font-size:1.2rem" data-count="940">0</span><span class="signal-value" style="font-size:1.2rem"> Mb</span></div>
-        <div><span class="signal-label">Uptime</span><br><span class="signal-value" style="font-size:1.2rem" data-count="99" data-suffix="%">0</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="fiber-divider"></div>
-
-<!-- DOR -->
-<section id="dor">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">O problema</div>
-      <h2>Cansado da internet que trava na hora que mais importa?</h2>
-      <p>Se você já perdeu a paciência com uma conexão que cai bem quando mais precisa dela, você não está sozinho.</p>
-    </div>
-    <div class="pain-grid">
-      <div class="pain-card reveal">
-        <span class="num">01 / queda de sinal</span>
-        <h3>A reunião cai no pior momento</h3>
-        <p>Internet instável interrompe videochamadas de trabalho justo na hora da apresentação.</p>
-      </div>
-      <div class="pain-card reveal">
-        <span class="num">02 / lentidão</span>
-        <h3>O jogo trava na partida decisiva</h3>
-        <p>Lag e picos de latência tiram você do jogo exatamente quando a vitória está próxima.</p>
-      </div>
-      <div class="pain-card reveal">
-        <span class="num">03 / suporte lento</span>
-        <h3>O suporte nunca resolve rápido</h3>
-        <p>Dias de espera para um problema que deveria ser resolvido em minutos.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SOLUÇÃO -->
-<section id="solucao">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">A solução</div>
-      <h2>A WIAFIBRA nasceu para acabar com essa história</h2>
-      <p>100% fibra óptica, do início ao fim, para entregar a velocidade que está no contrato — todos os dias, em todos os horários.</p>
-    </div>
-    <div class="compare reveal">
-      <div class="old">
-        <h4>Internet tradicional</h4>
-        <ul>
-          <li>Velocidade cai no horário de pico</li>
-          <li>Sinal interfere com chuva e rede elétrica</li>
-          <li>Latência alta em jogos e chamadas</li>
-          <li>Suporte demorado, sem previsão</li>
-        </ul>
-      </div>
-      <div class="new">
-        <h4>WIAFIBRA</h4>
-        <ul>
-          <li>Velocidade real, estável 24h por dia</li>
-          <li>Fibra óptica pura, imune a chuva e interferência</li>
-          <li>Latência baixa para jogos e videochamadas</li>
-          <li>Suporte local com atendimento ágil</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="fiber-divider"></div>
-
-<!-- BENEFÍCIOS -->
-<section id="beneficios">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">O que muda pra você</div>
-      <h2>Cada recurso técnico, traduzido pro seu dia a dia</h2>
-    </div>
-    <div class="benefits-grid">
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">⚡</div>
-        <h3>Download ultra-rápido</h3>
-        <p>Jogos sem lag e filmes em 4K sem travar, mesmo em horário de pico.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">🏠</div>
-        <h3>Fibra dedicada</h3>
-        <p>Sua velocidade não cai quando toda a família usa a internet ao mesmo tempo.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">🎯</div>
-        <h3>Baixa latência</h3>
-        <p>Home office sem congelar na videochamada e partidas online respondendo na hora.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-icon">📶</div>
-        <h3>Wi-Fi 6 incluso</h3>
-        <p>Sinal forte em todos os cômodos da casa, sem pontos cegos.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROVA SOCIAL -->
-<section id="depoimentos">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">Prova real</div>
-      <h2>Quem já trocou, não volta atrás</h2>
-    </div>
-    <div class="stats-bar reveal">
-      <div class="stat"><div class="val" data-count="99.7" data-suffix="%">0</div><div class="lbl">Uptime da rede</div></div>
-      <div class="stat"><div class="val" data-count="18" data-suffix=" mil">0</div><div class="lbl">Clientes conectados</div></div>
-      <div class="stat"><div class="val" data-count="98" data-suffix="%">0</div><div class="lbl">Velocidade real entregue</div></div>
-      <div class="stat"><div class="val" data-count="30" data-suffix=" min">0</div><div class="lbl">Tempo médio de suporte</div></div>
-    </div>
-    <div class="testi-track">
-      <div class="testi-card reveal">
-        <p>"Antes eu perdia reunião toda semana por causa da internet. Com a WIAFIBRA isso simplesmente acabou."</p>
-        <div class="testi-who"><div class="avatar">R</div><div><div class="testi-name">Renata M.</div><div class="testi-loc">Home office</div></div></div>
-      </div>
-      <div class="testi-card reveal">
-        <p>"Jogo online todo dia e nunca mais travei numa partida importante. A diferença de ping é gigante."</p>
-        <div class="testi-who"><div class="avatar">L</div><div><div class="testi-name">Lucas T.</div><div class="testi-loc">Gamer</div></div></div>
-      </div>
-      <div class="testi-card reveal">
-        <p>"Suporte resolveu meu problema em 20 minutos, sem enrolação. Nunca vi isso em outro provedor."</p>
-        <div class="testi-who"><div class="avatar">C</div><div><div class="testi-name">Camila S.</div><div class="testi-loc">Família</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="fiber-divider"></div>
-
-<!-- PLANOS -->
-<section id="planos">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">Planos</div>
-      <h2>Escolha a velocidade certa pra sua rotina</h2>
-      <p>Todos os planos incluem Wi-Fi 6, instalação sem taxa e suporte técnico local.</p>
-    </div>
-    <div class="price-grid">
-      <div class="plan reveal">
-        <div class="plan-name">Essencial</div>
-        <div class="plan-speed">300<span> Mb</span></div>
-        <div class="plan-for">Ideal para famílias</div>
-        <ul>
-          <li>Streaming em HD sem travar</li>
-          <li>Wi-Fi 6 incluso</li>
-          <li>Suporte técnico local</li>
-          <li>Sem fidelidade abusiva</li>
-        </ul>
-        <div class="plan-price">R$ 79,90<span>/mês</span></div>
-        <a href="https://wa.me/5500000000000" class="plan-btn">Contratar</a>
-      </div>
-      <div class="plan featured reveal">
-        <div class="badge">Mais contratado</div>
-        <div class="plan-name">Turbo</div>
-        <div class="plan-speed">600<span> Mb</span></div>
-        <div class="plan-for">Ideal para home office</div>
-        <ul>
-          <li>Videochamadas sem travar</li>
-          <li>Wi-Fi 6 incluso</li>
-          <li>Upload simétrico</li>
-          <li>Suporte prioritário</li>
-        </ul>
-        <div class="plan-price">R$ 99,90<span>/mês</span></div>
-        <a href="https://wa.me/5500000000000" class="plan-btn">Contratar</a>
-      </div>
-      <div class="plan reveal">
-        <div class="plan-name">Gamer Pro</div>
-        <div class="plan-speed">1<span> Giga</span></div>
-        <div class="plan-for">Ideal para gamers e empresas</div>
-        <ul>
-          <li>Latência mínima garantida</li>
-          <li>Wi-Fi 6 incluso</li>
-          <li>Upload simétrico completo</li>
-          <li>Suporte técnico VIP 24h</li>
-        </ul>
-        <div class="plan-price">R$ 139,90<span>/mês</span></div>
-        <a href="https://wa.me/5500000000000" class="plan-btn">Contratar</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">Dúvidas</div>
-      <h2>Perguntas frequentes</h2>
-    </div>
-    <div class="faq-list">
-      <details class="faq-item reveal"><summary>A instalação tem custo? <span class="plus">+</span></summary><p>Não. A instalação é gratuita para a maioria dos planos, sem taxas escondidas. Você contrata, agenda e nossa equipe cuida de tudo.</p></details>
-      <details class="faq-item reveal"><summary>Quanto tempo demora para instalar? <span class="plus">+</span></summary><p>Em áreas com cobertura ativa, a instalação costuma ocorrer em até 48h após a contratação, com confirmação pelo WhatsApp.</p></details>
-      <details class="faq-item reveal"><summary>Existe fidelidade no contrato? <span class="plus">+</span></summary><p>Trabalhamos com planos flexíveis, sem fidelidade abusiva. Você pode cancelar quando quiser, seguindo os termos informados na contratação.</p></details>
-      <details class="faq-item reveal"><summary>Posso trocar de plano depois? <span class="plus">+</span></summary><p>Sim, a qualquer momento. Basta solicitar pelo WhatsApp, e o upgrade ou downgrade é aplicado rapidamente, sem burocracia.</p></details>
-      <details class="faq-item reveal"><summary>O roteador Wi-Fi está incluso? <span class="plus">+</span></summary><p>Sim, todos os planos incluem roteador Wi-Fi de alta performance em comodato, já configurado para cobrir toda a residência.</p></details>
-      <details class="faq-item reveal"><summary>A internet cai em dias de chuva? <span class="plus">+</span></summary><p>Não. Por ser 100% fibra óptica, nossa rede não sofre interferência de chuva como acontece com tecnologias antigas.</p></details>
-      <details class="faq-item reveal"><summary>Funciona bem para jogos online? <span class="plus">+</span></summary><p>Sim. A baixa latência da fibra garante resposta imediata em jogos competitivos, mesmo em horários de pico.</p></details>
-      <details class="faq-item reveal"><summary>E se eu tiver problemas técnicos? <span class="plus">+</span></summary><p>Nosso suporte técnico local atende rapidamente, com prioridade para chamados de instabilidade.</p></details>
-      <details class="faq-item reveal"><summary>A velocidade contratada é a real? <span class="plus">+</span></summary><p>Sim. Por ser fibra dedicada, entregamos a velocidade real contratada, sem a variação comum em tecnologias compartilhadas.</p></details>
-      <details class="faq-item reveal"><summary>Como sei se tem cobertura no meu endereço? <span class="plus">+</span></summary><p>Basta preencher o formulário ou chamar no WhatsApp com seu endereço. Verificamos a disponibilidade em poucos minutos.</p></details>
-    </div>
-  </div>
-</section>
-
-<!-- CTA FINAL -->
-<section id="cta-final">
-  <div class="wrap">
-    <div class="final-cta reveal">
-      <h2>Chega de internet que falha</h2>
-      <p>WIAFIBRA: fibra óptica estável para famílias, times e gamers exigentes. Verifique a cobertura no seu endereço agora mesmo.</p>
-      <div class="cta-row">
-        <a href="#planos" class="btn-primary">Verificar Cobertura →</a>
-        <a href="https://wa.me/5500000000000" class="btn-ghost">Falar no WhatsApp</a>
-      </div>
-      <div class="urgency">⚠ Vagas limitadas por bairro para instalação nesta semana</div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="logo"><span class="dot"></span>WIAFIBRA</div>
-      <div class="footer-links">
-        <a href="#solucao">Solução</a>
-        <a href="#planos">Planos</a>
-        <a href="#depoimentos">Clientes</a>
-        <a href="#faq">Dúvidas</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 WIAFIBRA — Todos os direitos reservados.</span>
-      <span>CNPJ 00.000.000/0001-00</span>
-    </div>
-  </div>
-</footer>
-
-<a class="wa-float" href="https://wa.me/5500000000000" aria-label="Falar no WhatsApp">
-  <svg viewBox="0 0 24 24" fill="#04160F"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.6-1.3 1.15-1.8 1.2-.46.05-1.05.07-1.7-.1-.4-.1-.9-.28-1.56-.55-2.75-1.18-4.53-3.95-4.67-4.13-.14-.18-1.12-1.48-1.12-2.83 0-1.35.7-2.02.95-2.3.24-.27.53-.34.7-.34h.5c.16 0 .38-.03.58.45.22.53.75 1.83.82 1.96.07.14.11.3.02.48-.09.18-.14.3-.27.45-.14.16-.3.36-.42.48-.14.14-.28.29-.12.57.16.27.7 1.15 1.5 1.87 1.03.92 1.9 1.2 2.17 1.34.27.14.43.12.6-.07.16-.2.68-.8.87-1.07.18-.27.36-.22.6-.14.24.1 1.55.73 1.82.87.27.14.45.2.5.32.06.12.06.68-.16 1.27z"/></svg>
-</a>
-
-<script>
-  // scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach((e, i)=>{
-      if(e.isIntersecting){
-        setTimeout(()=> e.target.classList.add('in'), i * 60);
-        io.unobserve(e.target);
-      }
-    });
-  }, {threshold:0.15});
-  revealEls.forEach(el=> io.observe(el));
-
-  // stat counters
-  const counters = document.querySelectorAll('[data-count]');
-  const countIo = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        const el = entry.target;
-        const target = parseFloat(el.getAttribute('data-count'));
-        const suffix = el.getAttribute('data-suffix') || '';
-        const isFloat = target % 1 !== 0;
-        let start = 0;
-        const dur = 1400;
-        const t0 = performance.now();
-        function tick(now){
-          const p = Math.min((now - t0) / dur, 1);
-          const eased = 1 - Math.pow(1-p, 3);
-          const val = target * eased;
-          el.textContent = (isFloat ? val.toFixed(1) : Math.round(val)) + suffix;
-          if(p < 1) requestAnimationFrame(tick);
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              red: '#DC2626',      /* Vermelho Principal */
+              redHover: '#B91C1C', /* Vermelho Escuro */
+              darkRed: '#7F1D1D',  /* Vermelho tom de destaque */
+              yellow: '#F59E0B',   /* Amarelo/Dourado de Destaque */
+              black: '#0F172A',    /* Dark Background */
+              grayBg: '#F8FAFC',   /* Light Background */
+              cardBg: '#1E293B'
+            }
+          }
         }
-        requestAnimationFrame(tick);
-        countIo.unobserve(el);
       }
-    });
-  }, {threshold:0.5});
-  counters.forEach(el=> countIo.observe(el));
+    }
+  </script>
+  <style>
+    .bg-hero-pattern {
+      background: linear-gradient(135deg, rgba(220, 38, 38, 0.95) 0%, rgba(127, 29, 29, 0.9) 100%), 
+                  url('https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased text-slate-800 bg-slate-50 flex flex-col min-h-screen">
 
-  // only one faq open at a time
-  document.querySelectorAll('.faq-item').forEach(item=>{
-    item.addEventListener('toggle', ()=>{
-      if(item.open){
-        document.querySelectorAll('.faq-item').forEach(other=>{
-          if(other !== item) other.open = false;
-        });
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm py-3 px-6">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <!-- LOGO -->
+      <a href="#" class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-full bg-brand-red flex items-center justify-center text-white font-extrabold text-xl shadow-md">
+          G
+        </div>
+        <div class="flex flex-col">
+          <span class="font-heading font-extrabold text-lg leading-none text-slate-900 tracking-tight">GAÚCHOS</span>
+          <span class="font-heading font-bold text-xs leading-none text-brand-red tracking-widest">TELECOM</span>
+        </div>
+      </a>
+
+      <!-- MENU NAUVEGAÇÃO -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+        <a href="#inicio" class="hover:text-brand-red transition-colors">Início</a>
+        <a href="#planos" class="hover:text-brand-red transition-colors">Planos</a>
+        <a href="#sobre" class="hover:text-brand-red transition-colors">Sobre Nós</a>
+        <a href="#faq" class="hover:text-brand-red transition-colors">Dúvidas Frequentes</a>
+      </nav>
+
+      <!-- BOTÕES DE AÇÃO -->
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/5551991275920" target="_blank" class="hidden sm:inline-flex border border-brand-red text-brand-red hover:bg-brand-red/5 font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl transition-all">
+          Central do Assinante
+        </a>
+        <a href="https://wa.me/5551991275920" target="_blank" class="bg-brand-red hover:bg-brand-redHover text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-brand-red/30">
+          Assine Já
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="inicio" class="pt-32 pb-16 px-6 bg-hero-pattern text-white relative">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-8 items-center">
+      
+      <!-- LADO ESQUERDO: INFOS E DESTAQUE DE SPEED -->
+      <div class="md:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 bg-brand-yellow/20 border border-brand-yellow/40 text-brand-yellow px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide">
+          <i data-lucide="wifi" class="w-4 h-4"></i> 100% Fibra Óptica em Canoas e Viamão
+        </div>
+
+        <h1 class="font-heading font-extrabold text-4xl sm:text-6xl tracking-tight leading-tight">
+          Sua conexão em <br/>
+          <span class="text-brand-yellow">Alta Velocidade</span>
+        </h1>
+
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase text-white/80 tracking-wider">Planos de até</span>
+            <div class="text-4xl sm:text-5xl font-black text-white">600 MEGA</div>
+          </div>
+          <div class="h-10 w-px bg-white/20 hidden sm:block"></div>
+          <div class="space-y-2 text-xs">
+            <div class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow"></i> Roteador Dual Band 5G
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-brand-yellow"></i> Suporte Técnico Especializado
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LADO DIREITO: CARD WHATSAPP E CHAMADA -->
+      <div class="md:col-span-5 bg-white text-slate-900 p-8 rounded-3xl shadow-2xl space-y-6">
+        <h3 class="font-heading font-bold text-2xl text-slate-900">Consulte a cobertura para sua rua</h3>
+        <p class="text-slate-600 text-sm">Fale agora com a nossa equipe via WhatsApp e receba instaladores na sua casa rapidamente.</p>
+        
+        <form class="space-y-4" onsubmit="event.preventDefault(); window.open('https://wa.me/5551991275920', '_blank');">
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Seu Nome</label>
+            <input type="text" placeholder="Digite seu nome" class="w-full bg-slate-100 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-red" required>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Sua Cidade</label>
+            <select class="w-full bg-slate-100 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-red">
+              <option>Canoas / RS</option>
+              <option>Viamão / RS</option>
+            </select>
+          </div>
+          <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-600/30">
+            <i data-lucide="message-circle" class="w-5 h-5"></i> Verificar no WhatsApp
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- BANNER TESTE DE VELOCIDADE -->
+    <div class="max-w-7xl mx-auto mt-12 bg-slate-900/80 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-brand-red/20 text-brand-red flex items-center justify-center">
+          <i data-lucide="gauge" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-white text-base">Faça um teste de velocidade</h4>
+          <p class="text-xs text-slate-400">Verifique o desempenho da sua conexão atual</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 w-full sm:w-auto">
+        <a href="https://www.speedtest.net" target="_blank" rel="noopener" class="flex-1 sm:flex-none text-center bg-white/10 hover:bg-white/20 text-white font-bold text-xs px-6 py-2.5 rounded-xl border border-white/20 transition-all">Speedtest</a>
+        <a href="https://fast.com" target="_blank" rel="noopener" class="flex-1 sm:flex-none text-center bg-white/10 hover:bg-white/20 text-white font-bold text-xs px-6 py-2.5 rounded-xl border border-white/20 transition-all">Fast.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSSOS PLANOS -->
+  <section id="planos" class="py-20 px-6 bg-slate-50">
+    <div class="max-w-7xl mx-auto text-center space-y-3 mb-12">
+      <span class="text-xs font-bold text-brand-red uppercase tracking-widest">Planos Residenciais</span>
+      <h2 class="font-heading font-extrabold text-3xl sm:text-5xl text-slate-900">Nossos Planos de Internet</h2>
+      <p class="text-slate-600 max-w-xl mx-auto text-sm">Escolha a velocidade ideal para sua casa, jogos, streaming e trabalho home office.</p>
+    </div>
+
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+      
+      <!-- PLANO 1 -->
+      <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-lg hover:border-brand-red transition-all flex flex-col justify-between relative overflow-hidden group">
+        <div>
+          <span class="text-xs font-bold text-slate-400 uppercase">Plano Promo</span>
+          <div class="text-4xl font-black text-slate-900 mt-2 mb-6">400 <span class="text-lg font-bold text-brand-red">MEGA</span></div>
+          
+          <ul class="space-y-3 text-xs text-slate-600 mb-8">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> 100% Fibra Óptica</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> Wi-Fi de alta performance</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> Downloads e Uploads ultra-rápidos</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> Suporte técnico humanizado</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="mb-4">
+            <span class="text-xs text-slate-400">A partir de</span>
+            <div class="text-3xl font-black text-slate-900">R$ 49<span class="text-base font-bold">,90/mês</span></div>
+            <span class="text-[10px] text-brand-red font-semibold">*Desconto especial nas primeiras mensalidades</span>
+          </div>
+          <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20de%20400Mega" target="_blank" class="block text-center bg-slate-900 hover:bg-brand-red text-white font-bold py-3.5 rounded-xl transition-all">Contratar Agora</a>
+        </div>
+      </div>
+
+      <!-- PLANO 2 (DESTAQUE) -->
+      <div class="bg-gradient-to-b from-brand-red to-brand-darkRed text-white rounded-3xl p-8 shadow-2xl relative flex flex-col justify-between transform md:-translate-y-4">
+        <div class="absolute top-4 right-4 bg-brand-yellow text-slate-900 text-[10px] font-black uppercase px-3 py-1 rounded-full shadow-md">
+          Mais Vendido
+        </div>
+        <div>
+          <span class="text-xs font-bold text-white/80 uppercase">Plano Turbo</span>
+          <div class="text-5xl font-black text-white mt-2 mb-6">600 <span class="text-2xl font-bold text-brand-yellow">MEGA</span></div>
+          
+          <ul class="space-y-3 text-xs text-white/90 mb-8">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow"></i> 100% Fibra Óptica Premium</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow"></i> Roteador Dual Band 5G incluso</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow"></i> Ideal para múltiplos dispositivos & 4K</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow"></i> Atendimento e instalação prioritária</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="mb-4">
+            <span class="text-xs text-white/70">A partir de</span>
+            <div class="text-4xl font-black text-white">R$ 69<span class="text-base font-bold">,90/mês</span></div>
+            <span class="text-[10px] text-brand-yellow font-bold">*Melhor Custo-Benefício</span>
+          </div>
+          <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20de%20600Mega" target="_blank" class="block text-center bg-brand-yellow hover:bg-yellow-500 text-slate-900 font-extrabold py-4 rounded-xl transition-all shadow-lg">Assinar Melhor Plano</a>
+        </div>
+      </div>
+
+      <!-- PLANO 3 -->
+      <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-lg hover:border-brand-red transition-all flex flex-col justify-between group">
+        <div>
+          <span class="text-xs font-bold text-slate-400 uppercase">Plano Família</span>
+          <div class="text-4xl font-black text-slate-900 mt-2 mb-6">500 <span class="text-lg font-bold text-brand-red">MEGA</span></div>
+          
+          <ul class="space-y-3 text-xs text-slate-600 mb-8">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> 100% Fibra Óptica</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> Conexão estável e sem oscilação</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> Roteador com longo alcance</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> Suporte local na sua regiao</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="mb-4">
+            <span class="text-xs text-slate-400">A partir de</span>
+            <div class="text-3xl font-black text-slate-900">R$ 59<span class="text-base font-bold">,90/mês</span></div>
+          </div>
+          <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20de%20500Mega" target="_blank" class="block text-center bg-slate-900 hover:bg-brand-red text-white font-bold py-3.5 rounded-xl transition-all">Contratar Agora</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SOBRE NÓS -->
+  <section id="sobre" class="py-20 px-6 bg-slate-900 text-white relative">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <span class="text-xs font-bold text-brand-yellow uppercase tracking-widest">Sobre a Gaúchos Telecom</span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Qualidade técnica e foco nas pessoas</h2>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          A <strong class="text-white">Gaúchos Telecom</strong> nasceu com a missão de entregar conectividade ultra-rápida e ultra-estável com atendimento próximo e ágil. 
+          Atendemos com orgulho as cidades de <strong class="text-white">Canoas e Viamão / RS</strong>, trazendo infraestrutura moderna de fibra óptica diretamente para a sua casa ou empresa.
+        </p>
+        
+        <div class="grid sm:grid-cols-2 gap-4 pt-2">
+          <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700">
+            <i data-lucide="shield-check" class="w-6 h-6 text-brand-red mb-2"></i>
+            <h4 class="font-bold text-sm text-white">Sinal Estável</h4>
+            <p class="text-xs text-slate-400">Fibra óptica de ponta a ponta sem interrupções.</p>
+          </div>
+          <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700">
+            <i data-lucide="headphones" class="w-6 h-6 text-brand-yellow mb-2"></i>
+            <h4 class="font-bold text-sm text-white">Suporte Humano</h4>
+            <p class="text-xs text-slate-400">Atendimento rápido via WhatsApp sem robôs complicados.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-tr from-brand-red/30 to-brand-yellow/10 p-8 rounded-3xl border border-white/10 text-center relative">
+        <div class="w-20 h-20 bg-brand-red text-white rounded-full flex items-center justify-center mx-auto mb-6 text-3xl font-extrabold shadow-lg">
+          RS
+        </div>
+        <h3 class="font-heading font-bold text-2xl text-white mb-2">Orgulho de ser Gaúcho</h3>
+        <p class="text-xs text-slate-300 max-w-md mx-auto">
+          Compromisso de oferecer a melhor internet do Rio Grande do Sul para você trabalhar, estudar e se divertir com tranquilidade.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DÚVIDAS FREQUENTES (FAQ) -->
+  <section id="faq" class="py-20 px-6 bg-slate-50">
+    <div class="max-w-4xl mx-auto space-y-3 text-center mb-12">
+      <span class="text-xs font-bold text-brand-red uppercase tracking-widest">Tire Suas Dúvidas</span>
+      <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-slate-900">Perguntas Frequentes</h2>
+    </div>
+
+    <div class="max-w-3xl mx-auto space-y-4">
+      
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between font-bold text-slate-900 text-sm sm:text-base">
+          <span>A internet é 100% fibra óptica?</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-brand-red transition-transform"></i>
+        </div>
+        <p class="text-xs text-slate-600 mt-3 hidden">
+          Sim! Toda a nossa rede até a sua residência é feita em cabo de fibra óptica, garantindo velocidade contínua e baixa latência.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between font-bold text-slate-900 text-sm sm:text-base">
+          <span>Em quantos dias é realizada a instalação?</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-brand-red transition-transform"></i>
+        </div>
+        <p class="text-xs text-slate-600 mt-3 hidden">
+          Realizamos a instalação em prazos reduzidos, geralmente de 24h a 48h úteis após a aprovação da viabilidade na sua rua.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between font-bold text-slate-900 text-sm sm:text-base">
+          <span>Quais cidades a Gaúchos Telecom atende?</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-brand-red transition-transform"></i>
+        </div>
+        <p class="text-xs text-slate-600 mt-3 hidden">
+          Atendemos bairros estratégicos nas cidades de Canoas / RS e Viamão / RS.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 text-xs border-t border-slate-800 pt-16 pb-8 px-6 mt-auto">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-slate-800">
+      
+      <!-- LOGO E DESCRIÇÃO -->
+      <div class="md:col-span-5 space-y-4">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-brand-red flex items-center justify-center text-white font-extrabold text-sm">G</div>
+          <span class="font-heading font-extrabold text-white text-base">GAÚCHOS TELECOM</span>
+        </div>
+        <p class="text-slate-400 leading-relaxed pr-4">
+          Provedor de internet 100% Fibra Óptica. Conectando Canoas e Viamão com a máxima velocidade, estabilidade e respeito ao cliente.
+        </p>
+      </div>
+
+      <!-- CONTATO -->
+      <div class="md:col-span-4 space-y-3">
+        <h4 class="font-bold text-white text-sm mb-4">Atendimento e Contato</h4>
+        <p class="flex items-center gap-2">
+          <i data-lucide="phone" class="w-4 h-4 text-brand-red"></i> WhatsApp: (51) 99127-5920
+        </p>
+        <p class="flex items-center gap-2">
+          <i data-lucide="map-pin" class="w-4 h-4 text-brand-red"></i> Atendendo: Canoas e Viamão / RS
+        </p>
+      </div>
+
+      <!-- REDES SOCIAIS -->
+      <div class="md:col-span-3 space-y-3">
+        <h4 class="font-bold text-white text-sm mb-4">Siga-nos</h4>
+        <div class="flex gap-3">
+          <a href="https://www.instagram.com/gauchostelecom/" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-red transition-all">
+            <i data-lucide="instagram" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row items-center justify-between text-slate-500 gap-4">
+      <p>© 2026 Gaúchos Telecom. Todos os direitos reservados.</p>
+      <p>Desenvolvido para Portfólio</p>
+    </div>
+  </footer>
+
+  <script>
+    // Inicializar ícones Lucide
+    lucide.createIcons();
+
+    // Toggle para o FAQ (Accordion)
+    function toggleFaq(element) {
+      const p = element.querySelector('p');
+      const icon = element.querySelector('i');
+      
+      if (p.classList.contains('hidden')) {
+        p.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        p.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
       }
-    });
-  });
-</script>
+    }
+  </script>
 </body>
 </html>
