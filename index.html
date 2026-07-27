@@ -11,7 +11,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -26,13 +26,12 @@
           },
           colors: {
             brand: {
-              red: '#DC2626',      /* Vermelho Principal */
-              redHover: '#B91C1C', /* Vermelho Escuro */
-              darkRed: '#7F1D1D',  /* Vermelho tom de destaque */
-              yellow: '#F59E0B',   /* Amarelo/Dourado de Destaque */
-              black: '#0F172A',    /* Dark Background */
-              grayBg: '#F8FAFC',   /* Light Background */
-              cardBg: '#1E293B'
+              red: '#DC2626',      
+              redDark: '#991B1B',  
+              redDeep: '#7F1D1D',  
+              lime: '#84CC16',     /* Destaque para botões estilo o modelo */
+              limeHover: '#65A30D',
+              yellow: '#F59E0B',   
             }
           }
         }
@@ -40,160 +39,315 @@
     }
   </script>
   <style>
-    .bg-hero-pattern {
-      background: linear-gradient(135deg, rgba(220, 38, 38, 0.95) 0%, rgba(127, 29, 29, 0.9) 100%), 
-                  url('https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1600&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
+    /* Gradient e padrão de círculos idêntico ao site modelo */
+    .hero-bg {
+      background: radial-gradient(circle at 75% 30%, #EF4444 0%, #B91C1C 40%, #7F1D1D 80%, #450A0A 100%);
+    }
+    .planos-bg {
+      background: radial-gradient(circle at 20% 20%, #B91C1C 0%, #7F1D1D 50%, #450A0A 100%);
+    }
+    .wifi-radial-pattern {
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 24px 24px;
     }
   </style>
 </head>
-<body class="font-sans antialiased text-slate-800 bg-slate-50 flex flex-col min-h-screen">
+<body class="font-sans antialiased text-white bg-slate-900 flex flex-col min-h-screen">
 
-  <!-- HEADER -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm py-3 px-6">
+  <!-- HEADER TRANSPARENTE / INTEGRADO -->
+  <header class="absolute top-0 left-0 w-full z-50 py-5 px-6 sm:px-12 border-b border-white/10">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       <!-- LOGO OFICIAL -->
       <a href="#" class="flex items-center">
-        <img src="https://i.ibb.co/0yFPkT3N/Design-sem-nome-31.png" alt="Gaúchos Telecom" class="h-10 sm:h-12 w-auto object-contain" />
+        <img src="https://i.ibb.co/0yFPkT3N/Design-sem-nome-31.png" alt="Gaúchos Telecom" class="h-10 sm:h-12 w-auto object-contain brightness-0 invert" />
       </a>
 
       <!-- MENU NAVEGAÇÃO -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
-        <a href="#inicio" class="hover:text-brand-red transition-colors">Início</a>
-        <a href="#planos" class="hover:text-brand-red transition-colors">Planos</a>
-        <a href="#sobre" class="hover:text-brand-red transition-colors">Sobre Nós</a>
-        <a href="#faq" class="hover:text-brand-red transition-colors">Dúvidas Frequentes</a>
+      <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-white/90">
+        <a href="#inicio" class="hover:text-brand-lime transition-colors">Início</a>
+        <a href="#sobre" class="hover:text-brand-lime transition-colors">Sobre</a>
+        <a href="#planos" class="hover:text-brand-lime transition-colors">Planos</a>
+        <a href="#suporte" class="hover:text-brand-lime transition-colors">Suporte</a>
+        <a href="#faq" class="hover:text-brand-lime transition-colors">Contato</a>
       </nav>
 
-      <!-- BOTÕES DE AÇÃO -->
-      <div class="flex items-center gap-3">
-        <a href="https://wa.me/5551991275920" target="_blank" class="hidden sm:inline-flex border border-brand-red text-brand-red hover:bg-brand-red/5 font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl transition-all">
-          Central do Assinante
-        </a>
-        <a href="https://wa.me/5551991275920" target="_blank" class="bg-brand-red hover:bg-brand-redHover text-white font-bold text-xs sm:text-sm px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-brand-red/30">
-          Assine Já
+      <!-- BOTÃO CENTRAL DO CLIENTE -->
+      <div>
+        <a href="https://wa.me/5551991275920" target="_blank" class="bg-black/40 hover:bg-black/60 text-white font-bold text-xs sm:text-sm px-6 py-2.5 rounded-full border border-white/20 transition-all flex items-center gap-2">
+          Central do Cliente <i data-lucide="external-link" class="w-4 h-4"></i>
         </a>
       </div>
     </div>
   </header>
 
-  <!-- HERO SECTION (AJUSTADO: SEM VÃO NO TOPO E CORES COMBINANDO COM O BANNER) -->
-  <section id="inicio" class="pt-[64px] sm:pt-[72px] bg-[#800a0a] text-white relative">
+  <!-- HERO SECTION (ESTILO MODELO IDENTICO) -->
+  <section id="inicio" class="hero-bg pt-32 pb-20 px-6 sm:px-12 relative overflow-hidden min-h-[680px] flex flex-col justify-between">
     
-    <!-- BANNER IMAGEM (COLADO DIRETAMENTE SEM VÃO) -->
-    <div class="w-full">
-      <a href="https://wa.me/5551991275920" target="_blank" class="block">
-        <img 
-          src="https://i.ibb.co/PZYmXKSX/BANNER.png" 
-          alt="Banner Principal Gaúchos Telecom" 
-          class="w-full h-auto block"
-        />
-      </a>
+    <!-- ELEMENTO DE DECORAÇÃO RADIAL / WI-FI AO FUNDO -->
+    <div class="absolute top-1/2 right-10 -translate-y-1/2 opacity-15 pointer-events-none">
+      <i data-lucide="wifi" class="w-[500px] h-[500px] text-white"></i>
     </div>
 
-    <!-- BANNER TESTE DE VELOCIDADE (HARMONIZADO COM TOM DE VERMELHO ESCURO/VINHO DO BANNER) -->
-    <div class="p-6 bg-gradient-to-r from-[#800a0a] to-[#580505] border-t border-white/15">
-      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-white/10 border border-white/20 text-white flex items-center justify-center shadow-inner">
-            <i data-lucide="gauge" class="w-6 h-6"></i>
-          </div>
-          <div>
-            <h4 class="font-bold text-white text-base">Faça um teste de velocidade</h4>
-            <p class="text-xs text-red-200/80">Verifique o desempenho da sua conexão atual</p>
+    <div class="max-w-7xl mx-auto w-full grid md:grid-cols-12 gap-8 items-center my-auto relative z-10">
+      
+      <!-- LADO ESQUERDO: TEXTOS E VALORES -->
+      <div class="md:col-span-7 space-y-6">
+        
+        <!-- PLANO DESTAQUE MEGA -->
+        <div class="flex items-baseline gap-2">
+          <span class="font-heading font-extrabold text-7xl sm:text-9xl text-white tracking-tighter leading-none">500</span>
+          <span class="bg-brand-lime text-black font-black text-xl sm:text-3xl px-3 py-1 rounded-md uppercase tracking-tight">mega</span>
+        </div>
+
+        <!-- PREÇO -->
+        <div class="space-y-1">
+          <div class="text-xs font-bold uppercase text-white/80 tracking-widest">Apenas</div>
+          <div class="flex items-baseline gap-1">
+            <span class="text-2xl font-black text-white">R$</span>
+            <span class="font-heading font-black text-6xl sm:text-7xl text-white leading-none">79</span>
+            <span class="text-2xl font-black text-white">,90</span>
+            <span class="text-xs text-white/70 font-semibold ml-1">/mês</span>
           </div>
         </div>
-        <div class="flex items-center gap-3 w-full sm:w-auto">
-          <a href="https://www.speedtest.net" target="_blank" rel="noopener" class="flex-1 sm:flex-none text-center bg-white/15 hover:bg-white/25 text-white font-bold text-xs px-6 py-2.5 rounded-xl border border-white/25 transition-all shadow-sm">Speedtest</a>
-          <a href="https://fast.com" target="_blank" rel="noopener" class="flex-1 sm:flex-none text-center bg-white/15 hover:bg-white/25 text-white font-bold text-xs px-6 py-2.5 rounded-xl border border-white/25 transition-all shadow-sm">Fast.com</a>
+
+        <!-- TAG VERDE/AMARELA SUA NAVEGAÇÃO -->
+        <div class="pt-2">
+          <span class="inline-flex items-center gap-2 border border-brand-lime text-brand-lime bg-black/30 text-xs font-bold px-4 py-2 rounded-lg uppercase tracking-wider">
+            <i data-lucide="plus" class="w-4 h-4"></i> Sua navegação ultra veloz
+          </span>
+        </div>
+
+        <!-- BOTÃO CONHEÇA OUTROS PLANOS -->
+        <div class="pt-4">
+          <a href="#planos" class="inline-block bg-brand-lime hover:bg-brand-limeHover text-black font-black text-sm uppercase px-8 py-4 rounded-lg transition-all shadow-lg shadow-black/20">
+            Conheça Outros Planos
+          </a>
         </div>
       </div>
+
+      <!-- LADO DIREITO: MODELO / ILUSTRAÇÃO (RESERVADO PARA FOTO) -->
+      <div class="md:col-span-5 hidden md:flex justify-end relative">
+        <div class="relative z-10">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop" alt="Cliente Gaúchos Telecom" class="w-80 h-96 object-cover rounded-3xl shadow-2xl border-4 border-white/20" />
+        </div>
+      </div>
+
     </div>
+
+    <!-- CARDS DE DIFERENCIAIS (RODAPÉ DO HERO) -->
+    <div class="max-w-7xl mx-auto w-full mt-12 relative z-20">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div class="bg-white text-slate-800 p-4 rounded-2xl flex items-center gap-4 shadow-xl border border-slate-100">
+          <div class="w-12 h-12 rounded-xl bg-brand-red/10 text-brand-red flex items-center justify-center shrink-0">
+            <i data-lucide="wifi" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-bold leading-tight">Instalação sem custos e roteador consignado</span>
+        </div>
+
+        <div class="bg-white text-slate-800 p-4 rounded-2xl flex items-center gap-4 shadow-xl border border-slate-100">
+          <div class="w-12 h-12 rounded-xl bg-brand-red/10 text-brand-red flex items-center justify-center shrink-0">
+            <i data-lucide="headphones" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-bold leading-tight">Suporte personalizado 24 horas por dia</span>
+        </div>
+
+        <div class="bg-white text-slate-800 p-4 rounded-2xl flex items-center gap-4 shadow-xl border border-slate-100">
+          <div class="w-12 h-12 rounded-xl bg-brand-red/10 text-brand-red flex items-center justify-center shrink-0">
+            <i data-lucide="zap" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-bold leading-tight">Conexão rápida 100% fibra óptica</span>
+        </div>
+
+        <div class="bg-white text-slate-800 p-4 rounded-2xl flex items-center gap-4 shadow-xl border border-slate-100">
+          <div class="w-12 h-12 rounded-xl bg-brand-red/10 text-brand-red flex items-center justify-center shrink-0">
+            <i data-lucide="shield-check" class="w-6 h-6"></i>
+          </div>
+          <span class="text-xs font-bold leading-tight">Navegue com rapidez e segurança</span>
+        </div>
+
+      </div>
+    </div>
+
   </section>
 
-  <!-- NOSSOS PLANOS -->
-  <section id="planos" class="py-20 px-6 bg-slate-50">
-    <div class="max-w-7xl mx-auto text-center space-y-3 mb-12">
-      <span class="text-xs font-bold text-brand-red uppercase tracking-widest">Planos Residenciais</span>
-      <h2 class="font-heading font-extrabold text-3xl sm:text-5xl text-slate-900">Nossos Planos de Internet</h2>
-      <p class="text-slate-600 max-w-xl mx-auto text-sm">Escolha a velocidade ideal para sua casa, jogos, streaming e trabalho home office.</p>
-    </div>
-
-    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+  <!-- SEÇÃO DE PLANOS (IDENTICO AO MODELO) -->
+  <section id="planos" class="planos-bg py-24 px-6 sm:px-12 relative overflow-hidden border-t border-white/10">
+    <div class="max-w-7xl mx-auto space-y-12 relative z-10">
       
-      <!-- PLANO 1 -->
-      <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-lg hover:border-brand-red transition-all flex flex-col justify-between relative overflow-hidden group">
-        <div>
-          <span class="text-xs font-bold text-slate-400 uppercase">Plano Promo</span>
-          <div class="text-4xl font-black text-slate-900 mt-2 mb-6">400 <span class="text-lg font-bold text-brand-red">MEGA</span></div>
-          
-          <ul class="space-y-3 text-xs text-slate-600 mb-8">
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> 100% Fibra Óptica</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> Wi-Fi de alta performance</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> Downloads e Uploads ultra-rápidos</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> Suporte técnico humanizado</li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="mb-4">
-            <span class="text-xs text-slate-400">A partir de</span>
-            <div class="text-3xl font-black text-slate-900">R$ 49<span class="text-base font-bold">,90/mês</span></div>
-            <span class="text-[10px] text-brand-red font-semibold">*Desconto especial nas primeiras mensalidades</span>
-          </div>
-          <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20de%20400Mega" target="_blank" class="block text-center bg-slate-900 hover:bg-brand-red text-white font-bold py-3.5 rounded-xl transition-all">Contratar Agora</a>
-        </div>
+      <!-- TÍTULO DA SEÇÃO -->
+      <div class="space-y-2">
+        <h2 class="font-heading font-black text-4xl sm:text-5xl text-white">
+          Escolha o seu novo <span class="text-brand-lime">plano</span>
+        </h2>
+        <p class="text-white/80 text-sm max-w-2xl font-medium">
+          Descubra os melhores combos para turbinar sua diversão com filmes, jogos e navegação na internet!
+        </p>
       </div>
 
-      <!-- PLANO 2 (DESTAQUE) -->
-      <div class="bg-gradient-to-b from-brand-red to-brand-darkRed text-white rounded-3xl p-8 shadow-2xl relative flex flex-col justify-between transform md:-translate-y-4">
-        <div class="absolute top-4 right-4 bg-brand-yellow text-slate-900 text-[10px] font-black uppercase px-3 py-1 rounded-full shadow-md">
-          Mais Vendido
-        </div>
-        <div>
-          <span class="text-xs font-bold text-white/80 uppercase">Plano Turbo</span>
-          <div class="text-5xl font-black text-white mt-2 mb-6">600 <span class="text-2xl font-bold text-brand-yellow">MEGA</span></div>
-          
-          <ul class="space-y-3 text-xs text-white/90 mb-8">
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow"></i> 100% Fibra Óptica Premium</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow"></i> Roteador Dual Band 5G incluso</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow"></i> Ideal para múltiplos dispositivos & 4K</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-yellow"></i> Atendimento e instalação prioritária</li>
-          </ul>
-        </div>
+      <!-- GRID DOS 4 PLANOS (ESTILO MODELO) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- PLANO 1 -->
+        <div class="bg-black/30 backdrop-blur-sm border border-white/20 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-lime transition-all group">
+          <div class="space-y-4">
+            <div class="text-center font-bold text-xs uppercase text-white/80 tracking-widest">Gaúcho Light</div>
+            
+            <div class="flex items-baseline justify-center gap-1">
+              <span class="font-heading font-black text-6xl text-white tracking-tighter">300</span>
+              <span class="bg-brand-lime text-black font-black text-xs px-2 py-0.5 rounded uppercase">mega</span>
+            </div>
 
-        <div>
-          <div class="mb-4">
-            <span class="text-xs text-white/70">A partir de</span>
-            <div class="text-4xl font-black text-white">R$ 69<span class="text-base font-bold">,90/mês</span></div>
-            <span class="text-[10px] text-brand-yellow font-bold">*Melhor Custo-Benefício</span>
+            <div class="text-center">
+              <span class="text-[10px] font-bold text-white/60 uppercase block">Apenas</span>
+              <div class="flex items-baseline justify-center gap-0.5">
+                <span class="text-sm font-bold text-white">R$</span>
+                <span class="font-heading font-black text-4xl text-white">69</span>
+                <span class="text-sm font-bold text-white">,90</span>
+                <span class="text-[10px] text-white/60 font-semibold">/mês</span>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <span class="inline-block bg-brand-lime text-black text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
+                Instalação Gratuita
+              </span>
+            </div>
+
+            <ul class="text-[11px] font-bold text-white/90 space-y-2 pt-4 border-t border-white/10 uppercase tracking-wider text-center">
+              <li>+ App Standard</li>
+              <li>+ Canais Digitais</li>
+              <li>+ Conexão 100% Fibra</li>
+            </ul>
           </div>
-          <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20de%20600Mega" target="_blank" class="block text-center bg-brand-yellow hover:bg-yellow-500 text-slate-900 font-extrabold py-4 rounded-xl transition-all shadow-lg">Assinar Melhor Plano</a>
-        </div>
-      </div>
 
-      <!-- PLANO 3 -->
-      <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-lg hover:border-brand-red transition-all flex flex-col justify-between group">
-        <div>
-          <span class="text-xs font-bold text-slate-400 uppercase">Plano Família</span>
-          <div class="text-4xl font-black text-slate-900 mt-2 mb-6">500 <span class="text-lg font-bold text-brand-red">MEGA</span></div>
-          
-          <ul class="space-y-3 text-xs text-slate-600 mb-8">
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> 100% Fibra Óptica</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> Conexão estável e sem oscilação</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> Roteador com longo alcance</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-green-600"></i> Suporte local na sua região</li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="mb-4">
-            <span class="text-xs text-slate-400">A partir de</span>
-            <div class="text-3xl font-black text-slate-900">R$ 59<span class="text-base font-bold">,90/mês</span></div>
+          <div class="pt-6">
+            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20300Mega" target="_blank" class="block text-center bg-brand-lime hover:bg-brand-limeHover text-black font-black text-xs uppercase py-3 rounded-lg transition-all shadow-md">
+              Contratar
+            </a>
           </div>
-          <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20de%20500Mega" target="_blank" class="block text-center bg-slate-900 hover:bg-brand-red text-white font-bold py-3.5 rounded-xl transition-all">Contratar Agora</a>
         </div>
+
+        <!-- PLANO 2 -->
+        <div class="bg-black/30 backdrop-blur-sm border border-white/20 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-lime transition-all group">
+          <div class="space-y-4">
+            <div class="text-center font-bold text-xs uppercase text-white/80 tracking-widest">Gaúcho Mais +</div>
+            
+            <div class="flex items-baseline justify-center gap-1">
+              <span class="font-heading font-black text-6xl text-white tracking-tighter">500</span>
+              <span class="bg-brand-lime text-black font-black text-xs px-2 py-0.5 rounded uppercase">mega</span>
+            </div>
+
+            <div class="text-center">
+              <span class="text-[10px] font-bold text-white/60 uppercase block">Apenas</span>
+              <div class="flex items-baseline justify-center gap-0.5">
+                <span class="text-sm font-bold text-white">R$</span>
+                <span class="font-heading font-black text-4xl text-white">79</span>
+                <span class="text-sm font-bold text-white">,90</span>
+                <span class="text-[10px] text-white/60 font-semibold">/mês</span>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <span class="inline-block bg-brand-lime text-black text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
+                Instalação Gratuita
+              </span>
+            </div>
+
+            <ul class="text-[11px] font-bold text-white/90 space-y-2 pt-4 border-t border-white/10 uppercase tracking-wider text-center">
+              <li>+ App Standard</li>
+              <li>+ Canais Digitais</li>
+              <li>+ Conexão Ultra Fibra</li>
+            </ul>
+          </div>
+
+          <div class="pt-6">
+            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20500Mega" target="_blank" class="block text-center bg-brand-lime hover:bg-brand-limeHover text-black font-black text-xs uppercase py-3 rounded-lg transition-all shadow-md">
+              Contratar
+            </a>
+          </div>
+        </div>
+
+        <!-- PLANO 3 -->
+        <div class="bg-black/30 backdrop-blur-sm border border-white/20 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-lime transition-all group">
+          <div class="space-y-4">
+            <div class="text-center font-bold text-xs uppercase text-white/80 tracking-widest">Gaúcho Plus</div>
+            
+            <div class="flex items-baseline justify-center gap-1">
+              <span class="font-heading font-black text-6xl text-white tracking-tighter">650</span>
+              <span class="bg-brand-lime text-black font-black text-xs px-2 py-0.5 rounded uppercase">mega</span>
+            </div>
+
+            <div class="text-center">
+              <span class="text-[10px] font-bold text-white/60 uppercase block">Apenas</span>
+              <div class="flex items-baseline justify-center gap-0.5">
+                <span class="text-sm font-bold text-white">R$</span>
+                <span class="font-heading font-black text-4xl text-white">99</span>
+                <span class="text-sm font-bold text-white">,90</span>
+                <span class="text-[10px] text-white/60 font-semibold">/mês</span>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <span class="inline-block bg-brand-lime text-black text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
+                Instalação Gratuita
+              </span>
+            </div>
+
+            <ul class="text-[11px] font-bold text-white/90 space-y-2 pt-4 border-t border-white/10 uppercase tracking-wider text-center">
+              <li>+ App Premium</li>
+              <li>+ Canais HD</li>
+              <li>+ Wi-Fi Dual Band</li>
+            </ul>
+          </div>
+
+          <div class="pt-6">
+            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20650Mega" target="_blank" class="block text-center bg-brand-lime hover:bg-brand-limeHover text-black font-black text-xs uppercase py-3 rounded-lg transition-all shadow-md">
+              Contratar
+            </a>
+          </div>
+        </div>
+
+        <!-- PLANO 4 -->
+        <div class="bg-black/30 backdrop-blur-sm border border-white/20 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-lime transition-all group">
+          <div class="space-y-4">
+            <div class="text-center font-bold text-xs uppercase text-white/80 tracking-widest">Gaúcho Ultra</div>
+            
+            <div class="flex items-baseline justify-center gap-1">
+              <span class="font-heading font-black text-6xl text-white tracking-tighter">800</span>
+              <span class="bg-brand-lime text-black font-black text-xs px-2 py-0.5 rounded uppercase">mega</span>
+            </div>
+
+            <div class="text-center">
+              <span class="text-[10px] font-bold text-white/60 uppercase block">Apenas</span>
+              <div class="flex items-baseline justify-center gap-0.5">
+                <span class="text-sm font-bold text-white">R$</span>
+                <span class="font-heading font-black text-4xl text-white">119</span>
+                <span class="text-sm font-bold text-white">,90</span>
+                <span class="text-[10px] text-white/60 font-semibold">/mês</span>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <span class="inline-block bg-brand-lime text-black text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">
+                Instalação Gratuita
+              </span>
+            </div>
+
+            <ul class="text-[11px] font-bold text-white/90 space-y-2 pt-4 border-t border-white/10 uppercase tracking-wider text-center">
+              <li>+ App Premium</li>
+              <li>+ Todos os Canais</li>
+              <li>+ Roteador Wi-Fi 6</li>
+            </ul>
+          </div>
+
+          <div class="pt-6">
+            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20800Mega" target="_blank" class="block text-center bg-brand-lime hover:bg-brand-limeHover text-black font-black text-xs uppercase py-3 rounded-lg transition-all shadow-md">
+              Contratar
+            </a>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -203,29 +357,16 @@
   <section id="sobre" class="py-20 px-6 bg-slate-900 text-white relative">
     <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
       <div class="space-y-6">
-        <span class="text-xs font-bold text-brand-yellow uppercase tracking-widest">Sobre a Gaúchos Telecom</span>
+        <span class="text-xs font-bold text-brand-lime uppercase tracking-widest">Sobre a Gaúchos Telecom</span>
         <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Qualidade técnica e foco nas pessoas</h2>
         <p class="text-slate-300 text-sm leading-relaxed">
           A <strong class="text-white">Gaúchos Telecom</strong> nasceu com a missão de entregar conectividade ultra-rápida e ultra-estável com atendimento próximo e ágil. 
           Atendemos com orgulho as cidades de <strong class="text-white">Canoas e Viamão / RS</strong>, trazendo infraestrutura moderna de fibra óptica diretamente para a sua casa ou empresa.
         </p>
-        
-        <div class="grid sm:grid-cols-2 gap-4 pt-2">
-          <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700">
-            <i data-lucide="shield-check" class="w-6 h-6 text-brand-red mb-2"></i>
-            <h4 class="font-bold text-sm text-white">Sinal Estável</h4>
-            <p class="text-xs text-slate-400">Fibra óptica de ponta a ponta sem interrupções.</p>
-          </div>
-          <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700">
-            <i data-lucide="headphones" class="w-6 h-6 text-brand-yellow mb-2"></i>
-            <h4 class="font-bold text-sm text-white">Suporte Humano</h4>
-            <p class="text-xs text-slate-400">Atendimento rápido via WhatsApp sem robôs complicados.</p>
-          </div>
-        </div>
       </div>
 
-      <div class="bg-gradient-to-tr from-brand-red/30 to-brand-yellow/10 p-8 rounded-3xl border border-white/10 text-center relative">
-        <div class="w-20 h-20 bg-brand-red text-white rounded-full flex items-center justify-center mx-auto mb-6 text-3xl font-extrabold shadow-lg">
+      <div class="bg-gradient-to-tr from-brand-redDeep to-brand-redDark p-8 rounded-3xl border border-white/10 text-center relative">
+        <div class="w-20 h-20 bg-brand-lime text-black rounded-full flex items-center justify-center mx-auto mb-6 text-3xl font-extrabold shadow-lg">
           RS
         </div>
         <h3 class="font-heading font-bold text-2xl text-white mb-2">Orgulho de ser Gaúcho</h3>
@@ -236,109 +377,16 @@
     </div>
   </section>
 
-  <!-- DÚVIDAS FREQUENTES (FAQ) -->
-  <section id="faq" class="py-20 px-6 bg-slate-50">
-    <div class="max-w-4xl mx-auto space-y-3 text-center mb-12">
-      <span class="text-xs font-bold text-brand-red uppercase tracking-widest">Tire Suas Dúvidas</span>
-      <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-slate-900">Perguntas Frequentes</h2>
-    </div>
-
-    <div class="max-w-3xl mx-auto space-y-4">
-      
-      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm cursor-pointer" onclick="toggleFaq(this)">
-        <div class="flex items-center justify-between font-bold text-slate-900 text-sm sm:text-base">
-          <span>A internet é 100% fibra óptica?</span>
-          <i data-lucide="chevron-down" class="w-5 h-5 text-brand-red transition-transform"></i>
-        </div>
-        <p class="text-xs text-slate-600 mt-3 hidden">
-          Sim! Toda a nossa rede até a sua residência é feita em cabo de fibra óptica, garantindo velocidade contínua e baixa latência.
-        </p>
-      </div>
-
-      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm cursor-pointer" onclick="toggleFaq(this)">
-        <div class="flex items-center justify-between font-bold text-slate-900 text-sm sm:text-base">
-          <span>Em quantos dias é realizada a instalação?</span>
-          <i data-lucide="chevron-down" class="w-5 h-5 text-brand-red transition-transform"></i>
-        </div>
-        <p class="text-xs text-slate-600 mt-3 hidden">
-          Realizamos a instalação em prazos reduzidos, geralmente de 24h a 48h úteis após a aprovação da viabilidade na sua rua.
-        </p>
-      </div>
-
-      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm cursor-pointer" onclick="toggleFaq(this)">
-        <div class="flex items-center justify-between font-bold text-slate-900 text-sm sm:text-base">
-          <span>Quais cidades a Gaúchos Telecom atende?</span>
-          <i data-lucide="chevron-down" class="w-5 h-5 text-brand-red transition-transform"></i>
-        </div>
-        <p class="text-xs text-slate-600 mt-3 hidden">
-          Atendemos bairros estratégicos nas cidades de Canoas / RS e Viamão / RS.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
   <!-- FOOTER -->
-  <footer class="bg-slate-900 text-slate-400 text-xs border-t border-slate-800 pt-16 pb-8 px-6 mt-auto">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-slate-800">
-      
-      <!-- LOGO E DESCRIÇÃO -->
-      <div class="md:col-span-5 space-y-4">
-        <!-- LOGO OFICIAL NO FOOTER (Com brilho/fundo tratado para o tema escuro) -->
-        <div class="bg-white/10 p-2 rounded-xl inline-block backdrop-blur-sm border border-white/10">
-          <img src="https://i.ibb.co/0yFPkT3N/Design-sem-nome-31.png" alt="Gaúchos Telecom" class="h-10 w-auto object-contain brightness-110" />
-        </div>
-        <p class="text-slate-400 leading-relaxed pr-4">
-          Provedor de internet 100% Fibra Óptica. Conectando Canoas e Viamão com a máxima velocidade, estabilidade e respeito ao cliente.
-        </p>
-      </div>
-
-      <!-- CONTATO -->
-      <div class="md:col-span-4 space-y-3">
-        <h4 class="font-bold text-white text-sm mb-4">Atendimento e Contato</h4>
-        <p class="flex items-center gap-2">
-          <i data-lucide="phone" class="w-4 h-4 text-brand-red"></i> WhatsApp: (51) 99127-5920
-        </p>
-        <p class="flex items-center gap-2">
-          <i data-lucide="map-pin" class="w-4 h-4 text-brand-red"></i> Atendendo: Canoas e Viamão / RS
-        </p>
-      </div>
-
-      <!-- REDES SOCIAIS -->
-      <div class="md:col-span-3 space-y-3">
-        <h4 class="font-bold text-white text-sm mb-4">Siga-nos</h4>
-        <div class="flex gap-3">
-          <a href="https://www.instagram.com/gauchostelecom/" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-red transition-all">
-            <i data-lucide="instagram" class="w-4 h-4"></i>
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row items-center justify-between text-slate-500 gap-4">
+  <footer class="bg-black text-slate-400 text-xs border-t border-slate-800 pt-12 pb-8 px-6 mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-slate-500 gap-4">
       <p>© 2026 Gaúchos Telecom. Todos os direitos reservados.</p>
       <p>Desenvolvido para Portfólio</p>
     </div>
   </footer>
 
   <script>
-    // Inicializar ícones Lucide
     lucide.createIcons();
-
-    // Toggle para o FAQ (Accordion)
-    function toggleFaq(element) {
-      const p = element.querySelector('p');
-      const icon = element.querySelector('i');
-      
-      if (p.classList.contains('hidden')) {
-        p.classList.remove('hidden');
-        icon.style.transform = 'rotate(180deg)';
-      } else {
-        p.classList.add('hidden');
-        icon.style.transform = 'rotate(0deg)';
-      }
-    }
   </script>
 </body>
 </html>
