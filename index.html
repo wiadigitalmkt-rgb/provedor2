@@ -25,12 +25,12 @@
             sans: ['Inter', 'sans-serif'],
           },
           colors: {
-            neon: {
-              lime: '#82C91E',
-              bright: '#81E100',
-              hover: '#6FB112',
-              bgDark: '#0D3808',
-              bgPlanos: '#12410D',
+            brand: {
+              red: '#E11D48',       /* Vermelho Principal Destaque */
+              redBright: '#FF0033', /* Vermelho Vivo/Neon */
+              redHover: '#BE123C',  /* Vermelho escuro para hover */
+              redDark: '#4C0519',   /* Fundo escuro vinho */
+              redDeep: '#2A020D',   /* Fundo gradiente escuro */
             }
           }
         }
@@ -38,24 +38,33 @@
     }
   </script>
   <style>
-    /* Borda Neon Suave para a Seção de Planos */
-    .card-neon {
-      border: 1px solid rgba(130, 201, 30, 0.4);
-      box-shadow: 0 0 12px rgba(130, 201, 30, 0.15);
-      background-color: rgba(0, 0, 0, 0.25);
+    /* Transforma a imagem verde original em Vermelho */
+    .banner-red-filter {
+      filter: hue-rotate(240deg) saturate(1.8) contrast(1.1);
     }
-    .card-neon:hover {
-      border-color: rgba(129, 225, 0, 0.9);
-      box-shadow: 0 0 20px rgba(129, 225, 0, 0.35);
+    
+    /* Borda Neon Suave Vermelha para os Cards de Planos */
+    .card-neon-red {
+      border: 1px solid rgba(225, 29, 72, 0.4);
+      box-shadow: 0 0 12px rgba(225, 29, 72, 0.2);
+      background-color: rgba(0, 0, 0, 0.35);
+    }
+    .card-neon-red:hover {
+      border-color: rgba(255, 0, 51, 0.9);
+      box-shadow: 0 0 22px rgba(255, 0, 51, 0.4);
     }
   </style>
 </head>
 <body class="font-sans antialiased text-white bg-black flex flex-col min-h-screen">
 
-  <!-- HERO SECTION COM O BANNER DE FUNDO -->
-  <div class="relative w-full min-h-[580px] sm:min-h-[640px] bg-cover bg-center bg-no-repeat flex flex-col justify-between" 
-       style="background-image: url('https://i.ibb.co/PZYmXKSX/BANNER.png');">
+  <!-- HERO SECTION COM BANNER AJUSTADO PARA VERMELHO -->
+  <div class="relative w-full min-h-[580px] sm:min-h-[640px] flex flex-col justify-between overflow-hidden">
     
+    <!-- BANNER DE FUNDO COM FILTRO VERMELHO -->
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat banner-red-filter -z-10" 
+         style="background-image: url('https://i.ibb.co/PZYmXKSX/BANNER.png');">
+    </div>
+
     <!-- HEADER TRANSPARENTE POR CIMA DO BANNER -->
     <header class="w-full py-4 px-6 sm:px-12">
       <div class="max-w-7xl mx-auto flex items-center justify-between">
@@ -67,11 +76,11 @@
 
         <!-- MENU DE NAVEGAÇÃO -->
         <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-white">
-          <a href="#inicio" class="hover:text-neon-lime transition-colors">Início</a>
-          <a href="#sobre" class="hover:text-neon-lime transition-colors">Sobre</a>
-          <a href="#planos" class="hover:text-neon-lime transition-colors">Planos</a>
-          <a href="#suporte" class="hover:text-neon-lime transition-colors">Suporte</a>
-          <a href="#contato" class="hover:text-neon-lime transition-colors">Contato</a>
+          <a href="#inicio" class="hover:text-brand-redBright transition-colors">Início</a>
+          <a href="#sobre" class="hover:text-brand-redBright transition-colors">Sobre</a>
+          <a href="#planos" class="hover:text-brand-redBright transition-colors">Planos</a>
+          <a href="#suporte" class="hover:text-brand-redBright transition-colors">Suporte</a>
+          <a href="#contato" class="hover:text-brand-redBright transition-colors">Contato</a>
         </nav>
 
         <!-- BOTÃO CENTRAL DO CLIENTE -->
@@ -85,9 +94,8 @@
 
     <!-- ÁREA INTERATIVA DO BANNER (BOTÃO CONHEÇA OUTROS PLANOS) -->
     <div class="max-w-7xl mx-auto w-full px-6 sm:px-12 pb-16 pt-32 flex flex-col items-start justify-end">
-      <!-- O Banner já possui os textos e a garota incorporados. Posicionamos o botão de ação no local exato do modelo -->
       <div class="mt-auto">
-        <a href="#planos" class="inline-block bg-neon-lime hover:bg-neon-hover text-black font-extrabold text-xs sm:text-sm uppercase tracking-wider px-8 py-3.5 rounded-md transition-all shadow-lg hover:scale-105 transform">
+        <a href="#planos" class="inline-block bg-brand-redBright hover:bg-brand-redHover text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider px-8 py-3.5 rounded-md transition-all shadow-lg hover:scale-105 transform">
           Conheça Outros Planos
         </a>
       </div>
@@ -95,14 +103,14 @@
 
   </div>
 
-  <!-- SEÇÃO DIFERENCIAIS (FAIXA BRANCA IGUAL A SEGUNDA IMAGEM DE REFERÊNCIA) -->
-  <section class="w-full bg-white py-6 px-4 sm:px-12 border-t-4 border-neon-lime">
+  <!-- SEÇÃO DIFERENCIAIS (FAIXA BRANCA COM DETALHES EM VERMELHO) -->
+  <section class="w-full bg-white py-6 px-4 sm:px-12 border-t-4 border-brand-redBright">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
         <!-- CARD 1 -->
-        <div class="border border-emerald-300 rounded-2xl p-3.5 flex items-center gap-3.5 bg-white shadow-sm hover:shadow-md transition-shadow">
-          <div class="text-neon-lime shrink-0">
+        <div class="border border-rose-200 rounded-2xl p-3.5 flex items-center gap-3.5 bg-white shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-brand-redBright shrink-0">
             <i data-lucide="wifi" class="w-8 h-8 stroke-[1.5]"></i>
           </div>
           <span class="text-[11px] font-bold text-slate-700 leading-snug">
@@ -111,8 +119,8 @@
         </div>
 
         <!-- CARD 2 -->
-        <div class="border border-emerald-300 rounded-2xl p-3.5 flex items-center gap-3.5 bg-white shadow-sm hover:shadow-md transition-shadow">
-          <div class="text-neon-lime shrink-0">
+        <div class="border border-rose-200 rounded-2xl p-3.5 flex items-center gap-3.5 bg-white shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-brand-redBright shrink-0">
             <i data-lucide="headphones" class="w-8 h-8 stroke-[1.5]"></i>
           </div>
           <span class="text-[11px] font-bold text-slate-700 leading-snug">
@@ -121,18 +129,18 @@
         </div>
 
         <!-- CARD 3 -->
-        <div class="border border-emerald-300 rounded-2xl p-3.5 flex items-center gap-3.5 bg-white shadow-sm hover:shadow-md transition-shadow">
-          <div class="text-neon-lime shrink-0">
+        <div class="border border-rose-200 rounded-2xl p-3.5 flex items-center gap-3.5 bg-white shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-brand-redBright shrink-0">
             <i data-lucide="network" class="w-8 h-8 stroke-[1.5]"></i>
           </div>
           <span class="text-[11px] font-bold text-slate-700 leading-snug">
-            Conexão rápida 100% fibra ópica
+            Conexão rápida 100% fibra óptica
           </span>
         </div>
 
         <!-- CARD 4 -->
-        <div class="border border-emerald-300 rounded-2xl p-3.5 flex items-center gap-3.5 bg-white shadow-sm hover:shadow-md transition-shadow">
-          <div class="text-neon-lime shrink-0">
+        <div class="border border-rose-200 rounded-2xl p-3.5 flex items-center gap-3.5 bg-white shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-brand-redBright shrink-0">
             <i data-lucide="shield-check" class="w-8 h-8 stroke-[1.5]"></i>
           </div>
           <span class="text-[11px] font-bold text-slate-700 leading-snug">
@@ -144,14 +152,14 @@
     </div>
   </section>
 
-  <!-- SEÇÃO DE PLANOS (IGUAL À TERCEIRA IMAGEM COM BORDAS NEON) -->
-  <section id="planos" class="bg-gradient-to-b from-[#12410D] to-[#0A2607] py-20 px-6 sm:px-12 relative overflow-hidden">
+  <!-- SEÇÃO DE PLANOS (VERMELHO COM BORDAS NEON VERMELHAS) -->
+  <section id="planos" class="bg-gradient-to-b from-brand-redDark to-brand-redDeep py-20 px-6 sm:px-12 relative overflow-hidden">
     <div class="max-w-7xl mx-auto space-y-10 relative z-10">
       
       <!-- TÍTULO DA SEÇÃO -->
       <div class="space-y-2">
         <h2 class="font-heading font-black text-3xl sm:text-4xl text-white tracking-tight">
-          Escolha o seu novo <span class="text-neon-bright">plano</span>
+          Escolha o seu novo <span class="text-brand-redBright">plano</span>
         </h2>
         <p class="text-white/80 text-xs sm:text-sm font-medium">
           Descubra os melhores combos para turbinar sua diversão com filmes, jogos e navegação na internet!
@@ -162,17 +170,17 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         
         <!-- PLANO 1 -->
-        <div class="card-neon rounded-2xl p-6 flex flex-col justify-between transition-all">
+        <div class="card-neon-red rounded-2xl p-6 flex flex-col justify-between transition-all">
           <div class="space-y-4">
-            <div class="text-center font-bold text-[10px] uppercase text-white tracking-widest">MR LIGHT</div>
+            <div class="text-center font-bold text-[10px] uppercase text-white tracking-widest">GAÚCHO LIGHT</div>
             
             <div class="flex items-baseline justify-center gap-1">
               <span class="font-heading font-black text-6xl text-white tracking-tighter">300</span>
-              <span class="bg-neon-lime text-black font-black text-[10px] px-1.5 py-0.5 rounded uppercase">mega</span>
+              <span class="bg-brand-redBright text-white font-black text-[10px] px-1.5 py-0.5 rounded uppercase">mega</span>
             </div>
 
             <div class="text-center">
-              <span class="text-[9px] font-extrabold text-neon-lime uppercase block">APENAS</span>
+              <span class="text-[9px] font-extrabold text-brand-redBright uppercase block">APENAS</span>
               <div class="flex items-baseline justify-center gap-0.5">
                 <span class="text-xs font-black text-white">R$</span>
                 <span class="font-heading font-black text-4xl text-white">69</span>
@@ -182,7 +190,7 @@
             </div>
 
             <div class="text-center">
-              <span class="inline-block bg-neon-lime text-black text-[9px] font-black uppercase px-3 py-1 rounded-full tracking-wide">
+              <span class="inline-block bg-brand-redBright text-white text-[9px] font-black uppercase px-3 py-1 rounded-full tracking-wide">
                 INSTALAÇÃO GRATUITA
               </span>
             </div>
@@ -195,24 +203,24 @@
           </div>
 
           <div class="pt-6">
-            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20300Mega" target="_blank" class="block text-center bg-neon-lime hover:bg-neon-hover text-black font-black text-xs uppercase py-2.5 rounded-md transition-all">
+            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20300Mega" target="_blank" class="block text-center bg-brand-redBright hover:bg-brand-redHover text-white font-black text-xs uppercase py-2.5 rounded-md transition-all shadow-md">
               CONTRATAR
             </a>
           </div>
         </div>
 
         <!-- PLANO 2 -->
-        <div class="card-neon rounded-2xl p-6 flex flex-col justify-between transition-all">
+        <div class="card-neon-red rounded-2xl p-6 flex flex-col justify-between transition-all">
           <div class="space-y-4">
-            <div class="text-center font-bold text-[10px] uppercase text-white tracking-widest">MR MAIS +</div>
+            <div class="text-center font-bold text-[10px] uppercase text-white tracking-widest">GAÚCHO MAIS +</div>
             
             <div class="flex items-baseline justify-center gap-1">
               <span class="font-heading font-black text-6xl text-white tracking-tighter">500</span>
-              <span class="bg-neon-lime text-black font-black text-[10px] px-1.5 py-0.5 rounded uppercase">mega</span>
+              <span class="bg-brand-redBright text-white font-black text-[10px] px-1.5 py-0.5 rounded uppercase">mega</span>
             </div>
 
             <div class="text-center">
-              <span class="text-[9px] font-extrabold text-neon-lime uppercase block">APENAS</span>
+              <span class="text-[9px] font-extrabold text-brand-redBright uppercase block">APENAS</span>
               <div class="flex items-baseline justify-center gap-0.5">
                 <span class="text-xs font-black text-white">R$</span>
                 <span class="font-heading font-black text-4xl text-white">79</span>
@@ -222,7 +230,7 @@
             </div>
 
             <div class="text-center">
-              <span class="inline-block bg-neon-lime text-black text-[9px] font-black uppercase px-3 py-1 rounded-full tracking-wide">
+              <span class="inline-block bg-brand-redBright text-white text-[9px] font-black uppercase px-3 py-1 rounded-full tracking-wide">
                 INSTALAÇÃO GRATUITA
               </span>
             </div>
@@ -235,24 +243,24 @@
           </div>
 
           <div class="pt-6">
-            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20500Mega" target="_blank" class="block text-center bg-neon-lime hover:bg-neon-hover text-black font-black text-xs uppercase py-2.5 rounded-md transition-all">
+            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20500Mega" target="_blank" class="block text-center bg-brand-redBright hover:bg-brand-redHover text-white font-black text-xs uppercase py-2.5 rounded-md transition-all shadow-md">
               CONTRATAR
             </a>
           </div>
         </div>
 
         <!-- PLANO 3 -->
-        <div class="card-neon rounded-2xl p-6 flex flex-col justify-between transition-all">
+        <div class="card-neon-red rounded-2xl p-6 flex flex-col justify-between transition-all">
           <div class="space-y-4">
-            <div class="text-center font-bold text-[10px] uppercase text-white tracking-widest">MR PLUS</div>
+            <div class="text-center font-bold text-[10px] uppercase text-white tracking-widest">GAÚCHO PLUS</div>
             
             <div class="flex items-baseline justify-center gap-1">
               <span class="font-heading font-black text-6xl text-white tracking-tighter">650</span>
-              <span class="bg-neon-lime text-black font-black text-[10px] px-1.5 py-0.5 rounded uppercase">mega</span>
+              <span class="bg-brand-redBright text-white font-black text-[10px] px-1.5 py-0.5 rounded uppercase">mega</span>
             </div>
 
             <div class="text-center">
-              <span class="text-[9px] font-extrabold text-neon-lime uppercase block">APENAS</span>
+              <span class="text-[9px] font-extrabold text-brand-redBright uppercase block">APENAS</span>
               <div class="flex items-baseline justify-center gap-0.5">
                 <span class="text-xs font-black text-white">R$</span>
                 <span class="font-heading font-black text-4xl text-white">99</span>
@@ -262,7 +270,7 @@
             </div>
 
             <div class="text-center">
-              <span class="inline-block bg-neon-lime text-black text-[9px] font-black uppercase px-3 py-1 rounded-full tracking-wide">
+              <span class="inline-block bg-brand-redBright text-white text-[9px] font-black uppercase px-3 py-1 rounded-full tracking-wide">
                 INSTALAÇÃO GRATUITA
               </span>
             </div>
@@ -275,24 +283,24 @@
           </div>
 
           <div class="pt-6">
-            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20650Mega" target="_blank" class="block text-center bg-neon-lime hover:bg-neon-hover text-black font-black text-xs uppercase py-2.5 rounded-md transition-all">
+            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20650Mega" target="_blank" class="block text-center bg-brand-redBright hover:bg-brand-redHover text-white font-black text-xs uppercase py-2.5 rounded-md transition-all shadow-md">
               CONTRATAR
             </a>
           </div>
         </div>
 
         <!-- PLANO 4 -->
-        <div class="card-neon rounded-2xl p-6 flex flex-col justify-between transition-all">
+        <div class="card-neon-red rounded-2xl p-6 flex flex-col justify-between transition-all">
           <div class="space-y-4">
-            <div class="text-center font-bold text-[10px] uppercase text-white tracking-widest">MR ULTRA</div>
+            <div class="text-center font-bold text-[10px] uppercase text-white tracking-widest">GAÚCHO ULTRA</div>
             
             <div class="flex items-baseline justify-center gap-1">
               <span class="font-heading font-black text-6xl text-white tracking-tighter">800</span>
-              <span class="bg-neon-lime text-black font-black text-[10px] px-1.5 py-0.5 rounded uppercase">mega</span>
+              <span class="bg-brand-redBright text-white font-black text-[10px] px-1.5 py-0.5 rounded uppercase">mega</span>
             </div>
 
             <div class="text-center">
-              <span class="text-[9px] font-extrabold text-neon-lime uppercase block">APENAS</span>
+              <span class="text-[9px] font-extrabold text-brand-redBright uppercase block">APENAS</span>
               <div class="flex items-baseline justify-center gap-0.5">
                 <span class="text-xs font-black text-white">R$</span>
                 <span class="font-heading font-black text-4xl text-white">119</span>
@@ -302,7 +310,7 @@
             </div>
 
             <div class="text-center">
-              <span class="inline-block bg-neon-lime text-black text-[9px] font-black uppercase px-3 py-1 rounded-full tracking-wide">
+              <span class="inline-block bg-brand-redBright text-white text-[9px] font-black uppercase px-3 py-1 rounded-full tracking-wide">
                 INSTALAÇÃO GRATUITA
               </span>
             </div>
@@ -315,7 +323,7 @@
           </div>
 
           <div class="pt-6">
-            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20800Mega" target="_blank" class="block text-center bg-neon-lime hover:bg-neon-hover text-black font-black text-xs uppercase py-2.5 rounded-md transition-all">
+            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20800Mega" target="_blank" class="block text-center bg-brand-redBright hover:bg-brand-redHover text-white font-black text-xs uppercase py-2.5 rounded-md transition-all shadow-md">
               CONTRATAR
             </a>
           </div>
