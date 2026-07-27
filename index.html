@@ -346,7 +346,7 @@
   </section>
 
   <!-- SEÇÃO CONTRATE AGORA & AUTOATENDIMENTO -->
-  <section id="contato" class="bg-[#0B0C0E] py-16 px-4 sm:px-8 border-t border-white/10">
+  <section class="bg-[#0B0C0E] py-16 px-4 sm:px-8 border-t border-white/10">
     <div class="max-w-7xl mx-auto space-y-16">
       
       <!-- CANAIS DE ATENDIMENTO -->
@@ -369,12 +369,12 @@
           </a>
 
           <!-- BOTÃO TELEFONE -->
-          <a href="tel:08000000000" class="bg-zinc-900/80 hover:bg-zinc-800 border border-gaucho-red/30 hover:border-gaucho-red p-5 rounded-2xl flex items-center gap-4 transition-all group">
+          <a href="tel:5551991275920" class="bg-zinc-900/80 hover:bg-zinc-800 border border-gaucho-red/30 hover:border-gaucho-red p-5 rounded-2xl flex items-center gap-4 transition-all group">
             <div class="bg-gaucho-red text-white p-3 rounded-xl group-hover:scale-110 transition-transform">
               <i data-lucide="phone-call" class="w-7 h-7"></i>
             </div>
             <div>
-              <p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Ligação Gratuita</p>
+              <p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Atendimento Telefônico</p>
               <p class="text-lg font-bold text-white">Ligue agora (51) 99127-5920</p>
             </div>
           </a>
@@ -431,7 +431,7 @@
     </div>
   </section>
 
-  <!-- SEÇÃO CIDADES ATENDIDAS / NOSSAS UNIDADES -->
+  <!-- SEÇÃO CIDADES ATENDIDAS -->
   <section class="bg-white text-slate-800 py-16 px-4 sm:px-8 border-t-4 border-gaucho-red">
     <div class="max-w-7xl mx-auto space-y-10">
       
@@ -440,7 +440,7 @@
           Conheça as <span class="text-gaucho-red">cidades que atendemos</span>
         </h2>
         <p class="text-slate-500 text-xs sm:text-sm font-medium">
-          Estamos expansão constante para levar a melhor conexão de fibra óptica até você.
+          Estamos em expansão constante para levar a melhor conexão de fibra óptica até você.
         </p>
       </div>
 
@@ -468,7 +468,7 @@
           </div>
         </div>
 
-        <!-- CARD CIDADE 3 (Exemplo de expansão/Região) -->
+        <!-- CARD CIDADE 3 -->
         <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center space-y-3 hover:shadow-lg hover:border-gaucho-red/40 transition-all">
           <div class="text-gaucho-red flex justify-center">
             <i data-lucide="map-pin" class="w-8 h-8"></i>
@@ -479,7 +479,7 @@
           </div>
         </div>
 
-        <!-- CARD EMBREVE / OUTRAS REGIONAL -->
+        <!-- CARD CIDADE 4 -->
         <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center space-y-3 hover:shadow-lg hover:border-gaucho-red/40 transition-all">
           <div class="text-gaucho-red flex justify-center">
             <i data-lucide="globe" class="w-8 h-8"></i>
@@ -495,11 +495,174 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="bg-black text-slate-500 text-xs py-6 px-6 border-t border-white/10">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p>© 2026 Gaúchos Telecom. Todos os direitos reservados.</p>
-      <p>Canoas e Viamão / RS</p>
+  <!-- SEÇÃO FALE CONOSCO (ESTILO EXATO DA IMAGEM) -->
+  <section id="suporte" class="bg-white text-slate-800 py-16 px-4 sm:px-8 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      
+      <!-- FORMULÁRIO (ESQUERDA) -->
+      <div class="lg:col-span-6 bg-white border border-gaucho-red/40 rounded-2xl p-6 sm:p-8 shadow-sm">
+        <h3 class="font-heading font-black text-2xl text-slate-900 mb-6">Fale conosco</h3>
+        
+        <form action="#" method="POST" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Seu nome</label>
+            <input type="text" placeholder="" class="w-full px-4 py-2 text-sm border border-slate-300 rounded-full focus:outline-none focus:border-gaucho-red" required />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Seu e-mail</label>
+              <input type="email" placeholder="" class="w-full px-4 py-2 text-sm border border-slate-300 rounded-full focus:outline-none focus:border-gaucho-red" required />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">WhatsApp</label>
+              <input type="tel" placeholder="" class="w-full px-4 py-2 text-sm border border-slate-300 rounded-full focus:outline-none focus:border-gaucho-red" required />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Assunto</label>
+            <select class="w-full px-4 py-2 text-sm border border-slate-300 rounded-full focus:outline-none focus:border-gaucho-red text-slate-600 bg-white">
+              <option value="">Selecione um assunto</option>
+              <option value="duvidas">Dúvidas sobre planos</option>
+              <option value="suporte">Suporte Técnico</option>
+              <option value="financeiro">Financeiro / 2ª Via</option>
+              <option value="outro">Outros</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Mensagem</label>
+            <textarea rows="4" placeholder="Mensagem" class="w-full px-4 py-2 text-sm border border-slate-300 rounded-2xl focus:outline-none focus:border-gaucho-red resize-none"></textarea>
+          </div>
+
+          <div class="flex justify-end pt-2">
+            <button type="submit" class="bg-gaucho-red hover:bg-gaucho-redHover text-white font-bold text-sm px-8 py-2.5 rounded-lg transition-colors">
+              Enviar
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- DADOS DA EMPRESA E HORÁRIOS (DIREITA) -->
+      <div class="lg:col-span-6 space-y-8 lg:pl-6 pt-2">
+        
+        <div>
+          <h3 class="font-heading font-black text-xl text-slate-900 uppercase tracking-tight mb-4">
+            GAÚCHOS TELECOM PROVEDOR DE INTERNET LTDA
+          </h3>
+
+          <ul class="space-y-3 text-xs sm:text-sm font-medium text-slate-700">
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="file-badge-2" class="w-4 h-4 text-gaucho-red shrink-0"></i>
+              <span>CNPJ: 00.000.000/0001-00</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="map-pin" class="w-4 h-4 text-gaucho-red shrink-0"></i>
+              <span>Canoas / Viamão – Rio Grande do Sul</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="phone" class="w-4 h-4 text-gaucho-red shrink-0"></i>
+              <span>(51) 99127-5920</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="font-heading font-bold text-lg text-slate-900">Horário de atendimento:</h4>
+          
+          <ul class="space-y-2 text-xs sm:text-sm font-medium text-slate-700">
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="clock" class="w-4 h-4 text-gaucho-red shrink-0"></i>
+              <span>Segunda a sexta das 8h às 18h</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="clock" class="w-4 h-4 text-gaucho-red shrink-0"></i>
+              <span>Sábado das 8h às 12h</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RODAPÉ NOVO COMPLETO (BASEADO NO PRINT) -->
+  <footer class="bg-zinc-950 text-white pt-12 pb-6 px-4 sm:px-8 border-t border-gaucho-red">
+    <div class="max-w-7xl mx-auto space-y-12">
+      
+      <!-- GRID DE CONTEÚDO DO RODAPÉ -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- COLUNA 1: LINKS ÚTEIS -->
+        <div class="space-y-3">
+          <h4 class="font-heading font-extrabold text-base text-white">Links úteis</h4>
+          <ul class="space-y-1.5 text-xs text-slate-400 font-medium">
+            <li><a href="#inicio" class="hover:text-gaucho-red transition-colors">Início</a></li>
+            <li><a href="#sobre" class="hover:text-gaucho-red transition-colors">Sobre</a></li>
+            <li><a href="#planos" class="hover:text-gaucho-red transition-colors">Planos</a></li>
+            <li><a href="#suporte" class="hover:text-gaucho-red transition-colors">Suporte</a></li>
+            <li><a href="#contato" class="hover:text-gaucho-red transition-colors">Contato</a></li>
+          </ul>
+        </div>
+
+        <!-- COLUNA 2: HORÁRIO & TELEFONE -->
+        <div class="space-y-4">
+          <div class="space-y-2">
+            <h4 class="font-heading font-extrabold text-base text-white">Horário de atendimento</h4>
+            <ul class="space-y-1.5 text-xs text-slate-400 font-medium">
+              <li class="flex items-center gap-2">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-gaucho-red"></i> Segunda a sexta das 8h às 18h
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-gaucho-red"></i> Sábado das 8h às 12h
+              </li>
+            </ul>
+          </div>
+
+          <div class="space-y-1.5 pt-2">
+            <h4 class="font-heading font-extrabold text-base text-white">Telefone</h4>
+            <p class="text-xs text-slate-400 font-medium flex items-center gap-2">
+              <i data-lucide="phone" class="w-3.5 h-3.5 text-gaucho-red"></i> (51) 99127-5920
+            </p>
+          </div>
+        </div>
+
+        <!-- COLUNA 3: NOSSAS REDES -->
+        <div class="space-y-3">
+          <h4 class="font-heading font-extrabold text-base text-white">Nossas redes</h4>
+          <div class="flex items-center gap-3">
+            <a href="#" class="w-10 h-10 rounded-full bg-gaucho-red flex items-center justify-center text-white hover:opacity-90 transition-opacity">
+              <i data-lucide="instagram" class="w-5 h-5"></i>
+            </a>
+            <a href="https://wa.me/5551991275920" target="_blank" class="w-10 h-10 rounded-full bg-gaucho-red flex items-center justify-center text-white hover:opacity-90 transition-opacity">
+              <i data-lucide="message-circle" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- LINHA DIVISÓRIA -->
+      <div class="pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
+        
+        <!-- LOGO & ENDEREÇO INFERIOR -->
+        <div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+          <img src="https://i.ibb.co/qLpbRfM6/Design-sem-nome.png" alt="Gaúchos Telecom" class="h-8 w-auto object-contain brightness-0 invert" />
+          <div>
+            <p>Atendimento em Canoas e Viamão / RS. Telefone: (51) 99127-5920.</p>
+            <p>CNPJ: 00.000.000/0001-00</p>
+          </div>
+        </div>
+
+        <!-- DIREITOS RESERVADOS -->
+        <div class="text-center md:text-right">
+          <p>© 2026 Todos os direitos reservados Gaúchos Telecom.</p>
+        </div>
+
+      </div>
+
     </div>
   </footer>
 
