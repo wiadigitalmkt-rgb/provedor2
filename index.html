@@ -45,7 +45,7 @@
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* EFEITO AO PASSAR O MOUSE (LEVEMENTE MEXE PRA OUT SIDE + NEON MAIS FORTE) */
+    /* EFEITO AO PASSAR O MOUSE */
     .card-plan-neon:hover {
       transform: translateY(-8px) scale(1.01);
       border-color: rgba(255, 0, 0, 0.85);
@@ -70,16 +70,16 @@
   <!-- HERO SECTION COM BANNER 100% FULL WIDTH -->
   <section id="inicio" class="relative w-full overflow-hidden bg-[#0B0C0E]">
     
-    <!-- HEADER TRANSPARENTE SEM SOMBREAMENTO E MENU SEM NEGRITO -->
-    <header class="absolute top-0 left-0 w-full z-30 py-4 px-6 sm:px-12 bg-transparent">
+    <!-- HEADER TRANSPARENTE COM LOGO AMPLIADA -->
+    <header class="absolute top-0 left-0 w-full z-30 py-3 px-6 sm:px-12 bg-transparent">
       <div class="w-full max-w-[1920px] mx-auto flex items-center justify-between">
         
-        <!-- LOGO -->
+        <!-- LOGO AUMENTADA E DESTACADA -->
         <a href="#" class="flex items-center">
-          <img src="https://i.ibb.co/qLpbRfM6/Design-sem-nome.png" alt="Gaúchos Telecom" class="h-8 sm:h-10 w-auto object-contain brightness-0 invert" />
+          <img src="https://i.ibb.co/qLpbRfM6/Design-sem-nome.png" alt="Gaúchos Telecom" class="h-12 sm:h-16 md:h-20 w-auto object-contain brightness-0 invert drop-shadow-md" />
         </a>
 
-        <!-- MENU DE NAVEGAÇÃO (SEM NEGRITO -> font-medium) -->
+        <!-- MENU DE NAVEGAÇÃO -->
         <nav class="hidden md:flex items-center gap-8 text-xs font-medium uppercase tracking-wider text-white">
           <a href="#inicio" class="hover:text-gaucho-red transition-colors">Início</a>
           <a href="#sobre" class="hover:text-gaucho-red transition-colors">Sobre</a>
@@ -104,12 +104,11 @@
 
   </section>
 
-  <!-- SEÇÃO DIFERENCIAIS (FAIXA BRANCA COM DETALHES VERMELHOS) -->
+  <!-- SEÇÃO DIFERENCIAIS -->
   <section class="w-full bg-white py-5 px-4 sm:px-12 border-t-4 border-gaucho-red">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
-        <!-- CARD 1 -->
         <div class="border border-red-200 rounded-2xl p-3.5 flex items-center gap-3.5 bg-white shadow-sm hover:shadow-md transition-shadow">
           <div class="text-gaucho-red shrink-0">
             <i data-lucide="wifi" class="w-7 h-7 stroke-[2]"></i>
@@ -119,7 +118,6 @@
           </span>
         </div>
 
-        <!-- CARD 2 -->
         <div class="border border-red-200 rounded-2xl p-3.5 flex items-center gap-3.5 bg-white shadow-sm hover:shadow-md transition-shadow">
           <div class="text-gaucho-red shrink-0">
             <i data-lucide="headphones" class="w-7 h-7 stroke-[2]"></i>
@@ -129,7 +127,6 @@
           </span>
         </div>
 
-        <!-- CARD 3 -->
         <div class="border border-red-200 rounded-2xl p-3.5 flex items-center gap-3.5 bg-white shadow-sm hover:shadow-md transition-shadow">
           <div class="text-gaucho-red shrink-0">
             <i data-lucide="network" class="w-7 h-7 stroke-[2]"></i>
@@ -139,7 +136,6 @@
           </span>
         </div>
 
-        <!-- CARD 4 -->
         <div class="border border-red-200 rounded-2xl p-3.5 flex items-center gap-3.5 bg-white shadow-sm hover:shadow-md transition-shadow">
           <div class="text-gaucho-red shrink-0">
             <i data-lucide="shield-check" class="w-7 h-7 stroke-[2]"></i>
@@ -153,11 +149,10 @@
     </div>
   </section>
 
-  <!-- SEÇÃO DE PLANOS (DESIGN COPIADO FIELMENTE DO SITE DE REFERÊNCIA) -->
+  <!-- SEÇÃO DE PLANOS -->
   <section id="planos" class="bg-[#0B0C0E] py-16 px-4 sm:px-8 relative overflow-hidden">
     <div class="max-w-7xl mx-auto space-y-10 relative z-10">
       
-      <!-- TÍTULO DA SEÇÃO -->
       <div class="space-y-1">
         <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
           Escolha o seu novo <span class="text-gaucho-red">plano</span>
@@ -167,25 +162,20 @@
         </p>
       </div>
 
-      <!-- GRID DOS PLANOS -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
         
-        <!-- PLANO 1: GAÚCHO LIGHT -->
+        <!-- PLANO 1 -->
         <div class="card-plan-neon rounded-xl p-5 flex flex-col justify-between">
           <div class="space-y-4">
-            
-            <!-- TITULO DO PLANO -->
             <div class="text-center font-black text-xs uppercase text-white tracking-wider">
               GAÚCHO LIGHT
             </div>
             
-            <!-- VELOCIDADE -->
             <div class="flex items-center justify-center">
               <span class="font-heading font-black text-6xl text-white tracking-tighter leading-none">100</span>
               <span class="bg-gaucho-red text-white font-black text-[10px] px-1.5 py-0.5 rounded-r-md uppercase ml-0.5 self-center">mega</span>
             </div>
 
-            <!-- VALOR / PREÇO (LAYOUT IGUAL AO DA IMAGEM) -->
             <div class="pt-2">
               <span class="inline-block bg-gaucho-red text-white text-[9px] font-black uppercase px-1.5 py-0.5 rounded mb-1">
                 APENAS
@@ -198,14 +188,12 @@
               </div>
             </div>
 
-            <!-- BADGE INSTALAÇÃO -->
             <div>
               <span class="block text-center bg-gaucho-red text-white text-[10px] font-black uppercase py-1 px-3 rounded-full tracking-wide">
                 INSTALAÇÃO EM ATÉ 24H
               </span>
             </div>
 
-            <!-- LISTA DE BENEFÍCIOS -->
             <ul class="text-[11px] font-extrabold text-white space-y-2 pt-2 uppercase tracking-wide">
               <li class="flex items-center gap-1.5"><span class="text-gaucho-red font-black text-sm">+</span> Wifi 5</li>
               <li class="flex items-center gap-1.5"><span class="text-gaucho-red font-black text-sm">+</span> Supore humanizado</li>
@@ -213,18 +201,16 @@
             </ul>
           </div>
 
-          <!-- BOTÃO -->
           <div class="pt-6">
-            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20300Mega" target="_blank" class="btn-contratar-neon block text-center text-white font-black text-xs uppercase py-3 rounded-lg tracking-wider">
+            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20100Mega" target="_blank" class="btn-contratar-neon block text-center text-white font-black text-xs uppercase py-3 rounded-lg tracking-wider">
               CONTRATAR
             </a>
           </div>
         </div>
 
-        <!-- PLANO 2: GAÚCHO MAIS + -->
+        <!-- PLANO 2 -->
         <div class="card-plan-neon rounded-xl p-5 flex flex-col justify-between">
           <div class="space-y-4">
-            
             <div class="text-center font-black text-xs uppercase text-white tracking-wider">
               GAÚCHO MAIS +
             </div>
@@ -260,16 +246,15 @@
           </div>
 
           <div class="pt-6">
-            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20500Mega" target="_blank" class="btn-contratar-neon block text-center text-white font-black text-xs uppercase py-3 rounded-lg tracking-wider">
+            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20200Mega" target="_blank" class="btn-contratar-neon block text-center text-white font-black text-xs uppercase py-3 rounded-lg tracking-wider">
               CONTRATAR
             </a>
           </div>
         </div>
 
-        <!-- PLANO 3: GAÚCHO PLUS -->
+        <!-- PLANO 3 -->
         <div class="card-plan-neon rounded-xl p-5 flex flex-col justify-between">
           <div class="space-y-4">
-            
             <div class="text-center font-black text-xs uppercase text-white tracking-wider">
               GAÚCHO PLUS
             </div>
@@ -305,16 +290,15 @@
           </div>
 
           <div class="pt-6">
-            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20650Mega" target="_blank" class="btn-contratar-neon block text-center text-white font-black text-xs uppercase py-3 rounded-lg tracking-wider">
+            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20300Mega" target="_blank" class="btn-contratar-neon block text-center text-white font-black text-xs uppercase py-3 rounded-lg tracking-wider">
               CONTRATAR
             </a>
           </div>
         </div>
 
-        <!-- PLANO 4: GAÚCHO ULTRA -->
+        <!-- PLANO 4 -->
         <div class="card-plan-neon rounded-xl p-5 flex flex-col justify-between">
           <div class="space-y-4">
-            
             <div class="text-center font-black text-xs uppercase text-white tracking-wider">
               GAÚCHO ULTRA
             </div>
@@ -350,7 +334,7 @@
           </div>
 
           <div class="pt-6">
-            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20800Mega" target="_blank" class="btn-contratar-neon block text-center text-white font-black text-xs uppercase py-3 rounded-lg tracking-wider">
+            <a href="https://wa.me/5551991275920?text=Quero%20o%20plano%20400Mega" target="_blank" class="btn-contratar-neon block text-center text-white font-black text-xs uppercase py-3 rounded-lg tracking-wider">
               CONTRATAR
             </a>
           </div>
