@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gaúchos Telecom | Provedor de Internet 100% Fibra Óptica</title>
 
+  <!-- OTIMIZAÇÃO DE CARREGAMENTO DO BANNER -->
+  <link rel="preload" as="image" href="bannerprincipal.webp" fetchpriority="high" />
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -99,7 +102,7 @@
 
     <!-- BANNER EXPANDIDO 100% DE PONTA A PONTA -->
     <div class="w-full relative">
-      <img src="https://i.ibb.co/Q3pbvVF3/BANNER.png" alt="Banner Gaúchos Telecom" class="w-full h-auto block object-cover" />
+      <img src="bannerprincipal.webp" alt="Banner Gaúchos Telecom" class="w-full h-auto block object-cover" fetchpriority="high" decoding="async" />
     </div>
 
   </section>
@@ -657,13 +660,12 @@
         </div>
 
         <!-- DESENVOLVIDO POR -->
-<div class="flex items-center justify-center md:justify-end gap-2">
-  <span class="text-xs text-slate-400 font-medium">Desenvolvido por:</span>
-  <a href="https://wiadigital.com.br/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center transition-opacity hover:opacity-80">
-    <!-- Substitua a URL abaixo pelo link direto da sua logo -->
-    <img src="https://i.ibb.co/0ph5hPJL/logo-wiadigital-12.png" alt="WIA Digital" class="h-5 w-auto object-contain" />
-  </a>
-</div>
+        <div class="flex items-center justify-center md:justify-end gap-2">
+          <span class="text-xs text-slate-400 font-medium">Desenvolvido por:</span>
+          <a href="https://wiadigital.com.br/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center transition-opacity hover:opacity-80">
+            <img src="https://i.ibb.co/0ph5hPJL/logo-wiadigital-12.png" alt="WIA Digital" class="h-5 w-auto object-contain" />
+          </a>
+        </div>
 
       </div>
 
